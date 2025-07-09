@@ -7,7 +7,7 @@ import Projects from '@/components/Projects.astro'
 import SectionContainer from '@/components/SectionContainer.astro'
 import TitleSection from '@/components/TitleSection.astro'
 import Briefcase from '@/components/icons/Briefcase.astro'
-import CodeIcon from '@/components/icons/Code.astro'
+import CodeIcon from '@/components/icons/CodeIcon.astro'
 import GraduationCap from '@/components/icons/GraduationCap.astro'
 
 const SKILLS = [
@@ -21,7 +21,7 @@ const SKILLS = [
 
 const EDUCATION = [
   {
-    date: 'Jul 2025',
+    date: 'Jul 2025 (en progreso)',
     title: 'Máster FullStack Developer',
     institution: 'Universidad a distancia UNIR, Madrid, España',
   },
@@ -57,12 +57,12 @@ const EDUCATION = [
   title="Portfolio de Jesús Plata"
   description="Portfolio profesional de Jesús Plata, Desarrollador Full Stack con más de 10 años de experiencia en desarrollo web, administración de sistemas y bases de datos."
 >
-  <main class="px-4">
-    <SectionContainer class="py-16 md:py-36">
+  <main class="container">
+    <SectionContainer class="section py-16 md:py-36 hero">
       <Hero />
     </SectionContainer>
 
-    <SectionContainer id="sobre-mi" class="pb-16 md:pb-20">
+    <SectionContainer id="sobre-mi" class="section pb-16 md:pb-20">
       <TitleSection>
         <GraduationCap class="size-8" />
         Sobre mí
@@ -70,7 +70,7 @@ const EDUCATION = [
       <AboutMe />
     </SectionContainer>
 
-    <SectionContainer id="experiencia" class="pb-16 md:pb-20">
+    <SectionContainer id="experiencia" class="section pb-16 md:pb-20">
       <TitleSection>
         <Briefcase class="size-7" />
         Experiencia Laboral
@@ -78,7 +78,7 @@ const EDUCATION = [
       <Experience />
     </SectionContainer>
 
-    <SectionContainer id="proyectos" class="pb-16 md:pb-20">
+    <SectionContainer id="proyectos" class="section pb-16 md:pb-20">
       <TitleSection>
         <CodeIcon class="size-7" />
         Proyectos
@@ -86,16 +86,16 @@ const EDUCATION = [
       <Projects />
     </SectionContainer>
 
-    <SectionContainer id="habilidades" class="pb-16 md:pb-20">
+    <SectionContainer id="habilidades" class="section pb-16 md:pb-20">
       <TitleSection>
         <CodeIcon class="size-7" />
         Habilidades Técnicas
       </TitleSection>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="skills-grid">
         {SKILLS.map((skill) => (
-          <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-xl shadow-sm">
-            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3">{skill.category}</h3>
-            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300">
+          <div class="skill-card">
+            <h3>{skill.category}</h3>
+            <ul>
               {skill.items.map((item) => (
                 <li>{item}</li>
               ))}
@@ -105,24 +105,24 @@ const EDUCATION = [
       </div>
     </SectionContainer>
 
-    <SectionContainer id="educacion" class="pb-16 md:pb-20">
+    <SectionContainer id="educacion" class="section pb-16 md:pb-20">
       <TitleSection>
         <GraduationCap class="size-8" />
         Educación
       </TitleSection>
-      <ol class="relative mt-16">
+      <ol class="education-timeline">
         {EDUCATION.map((edu) => (
-          <li class="">
-            <div class="relative mx-12 pb-12 grid before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20 dark:before:border-white/15 before:content-[''] md:grid-cols-5 md:gap-10 md:space-x-4">
+          <li class="education-item">
+            <div class="grid md:grid-cols-5 md:gap-10 md:space-x-4">
               <div class="relative pb-12 md:col-span-2">
                 <div class="sticky top-0">
-                  <span class="text-yellow-400 -left-[42px] absolute rounded-full text-5xl">•</span>
-                  <h3 class="text-xl font-bold text-yellow-400">{edu.title}</h3>
-                  <h4 class="font-semibold text-xl text-gray-600 dark:text-white">{edu.institution}</h4>
-                  <time class="p-0 m-0 text-sm text-gray-600/80 dark:text-white/80">{edu.date}</time>
+                  <span class="dot"></span>
+                  <h3>{edu.title}</h3>
+                  <h4>{edu.institution}</h4>
+                  <time>{edu.date}</time>
                 </div>
               </div>
-              <div class="relative flex flex-col gap-2 pb-4 text-gray-600 dark:text-gray-300 md:col-span-3">
+              <div class="relative flex flex-col gap-2 pb-4 md:col-span-3">
                 {/* Add description if needed */}
               </div>
             </div>
@@ -132,12 +132,3 @@ const EDUCATION = [
     </SectionContainer>
   </main>
 </Layout>
-
-<style>
-  main {
-    @apply mx-auto max-w-4xl;
-  }
-  section {
-    @apply transition-opacity duration-500;
-  }
-</style>

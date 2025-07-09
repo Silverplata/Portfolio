@@ -1,0 +1,29 @@
+/* Variables CSS */
+:root {
+  --primary: #10b981; /* Verde esmeralda */
+  --secondary: #8b5cf6; /* Púrpura moderno */
+  --accent-yellow: #facc15; /* Amarillo vibrante */
+  --background-light: #f0f4f8;
+  --background-dark: #0f172a;
+  --text-light: #1e293b;
+  --text-dark: #e2e8f0;
+  --glow: rgba(16, 185, 129, 0.5);
+}
+
+/* Utilidades */
+.text-gradient {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.transition-smooth {
+  transition: all 0.3s ease;
+}
+
+.container {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1rem;
+}

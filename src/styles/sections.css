@@ -21,7 +21,7 @@
   margin: 0 auto;
   text-align: center;
   padding: 2rem;
-  background: rgba(16, 185, 129, 0.1); /* Tono claro derivado de --primary */
+  background: rgba(16, 185, 129, 0.1);
   border-radius: 1rem;
   backdrop-filter: blur(5px);
 }
@@ -44,15 +44,14 @@
   font-family: 'Poppins', sans-serif;
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--text-light);
-  background: linear-gradient(45deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #0f172a; /* Más oscuro para modo claro */
 }
 
 .dark .hero h1 {
   color: transparent;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .hero p {
@@ -78,11 +77,24 @@
   margin-top: 4rem;
 }
 
+.experience-timeline h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f172a; /* Más oscuro para modo claro */
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dark .experience-timeline h2 {
+  color: var(--text-dark);
+}
+
 .experience-item {
   position: relative;
   margin: 0 2rem 3rem;
   padding: 1.5rem;
-  background: rgba(16, 185, 129, 0.1); /* Tono claro derivado de --primary */
+  background: rgba(16, 185, 129, 0.1);
   border-radius: 1rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -245,7 +257,7 @@
 
 .skill-card {
   padding: 1.5rem;
-  background: rgba(139, 92, 246, 0.1); /* Tono claro derivado de --secondary */
+  background: rgba(139, 92, 246, 0.1);
   border-radius: 1rem;
   backdrop-filter: blur(5px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -265,6 +277,10 @@
   font-family: 'Poppins', sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
+  color: #0f172a; /* Más oscuro para modo claro */
+}
+
+.dark .skill-card h3 {
   color: var(--accent-yellow);
 }
 
@@ -299,7 +315,7 @@
   position: relative;
   margin: 0 2rem 3rem;
   padding: 1.5rem;
-  background: rgba(16, 185, 129, 0.1); /* Tono claro derivado de --primary */
+  background: rgba(16, 185, 129, 0.1);
   border-radius: 1rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;

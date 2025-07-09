@@ -3,14 +3,10 @@
 
 /* Reset CSS y estilos base */
 :root {
-  --primary: #10b981; /* Verde esmeralda vibrante */
-  --secondary: #8b5cf6; /* Púrpura moderno */
-  --accent-yellow: #facc15; /* Amarillo para destacar */
   --background-light: #f0f4f8;
   --background-dark: #0f172a;
   --text-light: #1e293b;
   --text-dark: #e2e8f0;
-  --glow: rgba(16, 185, 129, 0.5);
 }
 
 html {
@@ -40,6 +36,7 @@ body::before {
   background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent-yellow));
   background-size: 200% 200%;
   animation: gradientFlow 15s ease infinite;
+  transition: background 0.5s ease; /* Transición suave al cambiar tema */
 }
 
 @keyframes gradientFlow {
@@ -52,11 +49,6 @@ body::before {
   body {
     background: var(--background-dark);
     color: var(--text-dark);
-  }
-  body::before {
-    background: linear-gradient(45deg, #0f766e, #6d28d9, #eab308);
-    background-size: 200% 200%;
-    animation: gradientFlow 15s ease infinite;
   }
 }
 

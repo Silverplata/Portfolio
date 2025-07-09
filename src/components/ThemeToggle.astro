@@ -1,89 +1,80 @@
 ---
-import "../styles/components.css"
-import SunIcon from "./icons/Sun.astro"
-import MoonIcon from "./icons/Moon.astro"
-import SystemIcon from "./icons/System.astro"
-
-const THEMES = ["Light", "Dark", "System"]
+import Sun from './icons/Sun.astro';
+import Moon from './icons/Moon.astro';
+import System from './icons/System.astro';
 ---
 
-<div class="relative ml-1 mr-1">
-  <button
-    transition:persist
-    id="theme-toggle-btn"
-    class="theme-toggle-btn"
-  >
-    <span class="sr-only">Elige el tema</span>
-    <SunIcon id="light" class="theme-toggle-icon size-5 transition-smooth" />
-    <MoonIcon id="dark" class="theme-toggle-icon absolute size-5 transition-smooth" />
-    <SystemIcon id="system" class="theme-toggle-icon absolute size-5 transition-smooth" />
+<div class="theme-toggle">
+  <button id="theme-toggle-light" aria-label="Usar tema claro" class="transition-smooth p-2 rounded-full hover:bg-[var(--primary)] hover:text-white">
+    <Sun />
   </button>
-  <div
-    transition:persist
-    id="themes-menu"
-    class="themes-menu"
-  >
-    <ul>
-      {THEMES.map((theme) => (
-        <li class="themes-menu-option">{theme}</li>
-      ))}
-    </ul>
-  </div>
+  <button id="theme-toggle-dark" aria-label="Usar tema oscuro" class="transition-smooth p-2 rounded-full hover:bg-[var(--primary)] hover:text-white">
+    <Moon />
+  </button>
+  <button id="theme-toggle-system" aria-label="Usar tema del sistema" class="transition-smooth p-2 rounded-full hover:bg-[var(--primary)] hover:text-white">
+    <System />
+  </button>
 </div>
 
-<script is:inline>
-  let remove = null
-  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)")
-  const themesMenu = document.getElementById("themes-menu")
+<script>
+  const html = document.documentElement;
+  const lightButton = document.getElementById('theme-toggle-light');
+  const darkButton = document.getElementById('theme-toggle-dark');
+  const systemButton = document.getElementById('theme-toggle-system');
 
-  const getThemePreference = () => {
-    if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("theme") ?? "system"
+  // Definir el tipo de theme explícitamente
+  type Theme = 'light' | 'dark' | 'system';
+
+  const setTheme = (theme: Theme) => {
+    html.classList.remove('light', 'dark');
+    if (theme !== 'system') {
+      html.classList.add(theme);
     }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+    localStorage.setItem('theme', theme);
+  };
+
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+  const initializeTheme = () => {
+    const savedTheme = localStorage.getItem('theme') as Theme || 'system';
+    if (savedTheme === 'system') {
+      setTheme(prefersDark.matches ? 'dark' : 'light');
+    } else {
+      setTheme(savedTheme);
+    }
+  };
+
+  // Verificar que los botones existan antes de añadir event listeners
+  if (lightButton instanceof HTMLElement) {
+    lightButton.addEventListener('click', () => setTheme('light'));
+  } else {
+    console.error('No se encontró el botón con ID "theme-toggle-light"');
   }
 
-  const updateIcon = (themePreference) => {
-    document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
-      element.style.scale = element.id === themePreference ? "1" : "0"
-    })
+  if (darkButton instanceof HTMLElement) {
+    darkButton.addEventListener('click', () => setTheme('dark'));
+  } else {
+    console.error('No se encontró el botón con ID "theme-toggle-dark"');
   }
 
-  const updateTheme = () => {
-    if (remove != null) {
-      remove()
-    }
-    matchMedia.addEventListener("change", updateTheme)
-    remove = () => {
-      matchMedia.removeEventListener("change", updateTheme)
-    }
-
-    const themePreference = getThemePreference()
-    const isDark = themePreference === "dark" || (themePreference === "system" && matchMedia.matches)
-
-    updateIcon(themePreference)
-    document.documentElement.classList[isDark ? "add" : "remove"]("dark")
+  if (systemButton instanceof HTMLElement) {
+    systemButton.addEventListener('click', () => setTheme('system'));
+  } else {
+    console.error('No se encontró el botón con ID "theme-toggle-system"');
   }
 
-  updateTheme()
+  prefersDark.addEventListener('change', (e) => {
+    if (localStorage.getItem('theme') === 'system') {
+      setTheme(e.matches ? 'dark' : 'light');
+    }
+  });
 
-  document.addEventListener("click", () => themesMenu.classList.remove("open"))
-
-  document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
-    e.stopPropagation()
-    const isClosed = !themesMenu.classList.contains("open")
-    themesMenu.classList[isClosed ? "add" : "remove"]("open")
-  })
-
-  document.querySelectorAll(".themes-menu-option").forEach((element) => {
-    element.addEventListener("click", (e) => {
-      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim())
-      updateTheme()
-    })
-  })
-
-  document.addEventListener('astro:after-swap', () => {
-    updateTheme();
-    window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
-  })
+  initializeTheme();
 </script>
+
+<style>
+  .theme-toggle {
+    display: flex;
+    gap: 0.5rem;
+  }
+</style>

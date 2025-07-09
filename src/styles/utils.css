@@ -1,12 +1,22 @@
 /* Variables CSS */
 :root {
-  --primary: #10b981; /* Verde esmeralda vibrante */
-  --secondary: #8b5cf6; /* Púrpura moderno */
-  --accent-yellow: #facc15; /* Amarillo para destacar */
   --background-light: #f0f4f8;
   --background-dark: #0f172a;
   --text-light: #1e293b;
   --text-dark: #e2e8f0;
+}
+
+.light {
+  --primary: #a7f3d0; /* Verde claro con toque blanco */
+  --secondary: #ddd6fe; /* Púrpura claro con matices blancos */
+  --accent-yellow: #fefcbf; /* Amarillo muy claro con blanco */
+  --glow: rgba(167, 243, 208, 0.5); /* Resplandor suave */
+}
+
+.dark {
+  --primary: #10b981; /* Verde esmeralda vibrante */
+  --secondary: #8b5cf6; /* Púrpura moderno */
+  --accent-yellow: #facc15; /* Amarillo para destacar */
   --glow: rgba(16, 185, 129, 0.5);
 }
 

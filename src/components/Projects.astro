@@ -2,14 +2,14 @@
 import CodeIcon from "./icons/CodeIcon.astro"
 
 const TAGS = {
-  PHP: {
-    name: "PHP",
-    class: "bg-blue-600 text-white",
+  HTML: {
+    name: "HTML",
+    class: "bg-orange-500 text-white",
     icon: CodeIcon,
   },
-  MYSQL: {
-    name: "MySQL",
-    class: "bg-gray-600 text-white",
+  CSS: {
+    name: "CSS",
+    class: "bg-blue-500 text-white",
     icon: CodeIcon,
   },
   JAVASCRIPT: {
@@ -17,9 +17,64 @@ const TAGS = {
     class: "bg-yellow-500 text-black",
     icon: CodeIcon,
   },
+  CSHARP: {
+    name: "C# .NET",
+    class: "bg-purple-600 text-white",
+    icon: CodeIcon,
+  },
+  PHP: {
+    name: "PHP",
+    class: "bg-blue-600 text-white",
+    icon: CodeIcon,
+  },
   PYTHON: {
     name: "Python",
     class: "bg-blue-800 text-white",
+    icon: CodeIcon,
+  },
+  MSSQL: {
+    name: "Microsoft SQL Server",
+    class: "bg-gray-600 text-white",
+    icon: CodeIcon,
+  },
+  MYSQL: {
+    name: "MySQL",
+    class: "bg-gray-600 text-white",
+    icon: CodeIcon,
+  },
+  POSTMAN: {
+    name: "Postman API",
+    class: "bg-orange-600 text-white",
+    icon: CodeIcon,
+  },
+  SWAGGER: {
+    name: "Swagger API",
+    class: "bg-green-500 text-white",
+    icon: CodeIcon,
+  },
+  AZUREDEVOPS: {
+    name: "Azure DevOps",
+    class: "bg-blue-700 text-white",
+    icon: CodeIcon,
+  },
+  GRAFANA: {
+    name: "Grafana",
+    class: "bg-orange-500 text-white",
+    icon: CodeIcon,
+  },
+  GITHUB: {
+    name: "GitHub",
+    class: "bg-gray-800 text-white",
+    icon: CodeIcon,
+  },
+  FILEZILLA: {
+    name: "FileZilla",
+    class: "bg-green-600 text-white",
+    icon: CodeIcon,
+  },
+  AUTOCAD: {
+    name: "AutoCAD",
+    class: "bg-red-600 text-white",
     icon: CodeIcon,
   },
   ARCGIS: {
@@ -27,9 +82,9 @@ const TAGS = {
     class: "bg-green-600 text-white",
     icon: CodeIcon,
   },
-  GRAFANA: {
-    name: "Grafana",
-    class: "bg-orange-500 text-white",
+  N8N: {
+    name: "n8n",
+    class: "bg-purple-500 text-white",
     icon: CodeIcon,
   },
 }
@@ -38,23 +93,30 @@ const PROJECTS = [
   {
     title: "Intranet de Análisis de Datos - Utedevas",
     description:
-      "Desarrollé una plataforma web de intranet para análisis de datos utilizando HTML, CSS, PHP, JavaScript, MySQL y servicios web SOAP. Implementé dashboards personalizados por departamento, mejorando la experiencia del usuario y aumentando la eficiencia en la toma de decisiones en un 35%.",
+      "Desarrollé y mantuve una plataforma web de intranet para análisis de datos, utilizando HTML, CSS, JavaScript, y PHP para el desarrollo front-end y back-end, junto con MySQL para la gestión de bases de datos. Implementé dashboards personalizados por departamento, integrando servicios web SOAP y utilizando Postman y Swagger para pruebas de API. Gestioné el control de versiones con GitHub y usé Azure DevOps para coordinar tareas en un equipo ágil con metodología Scrum. Este proyecto mejoró la eficiencia en la toma de decisiones en un 35%.",
     image: "/projects/intranet.webp",
-    tags: [TAGS.PHP, TAGS.MYSQL, TAGS.JAVASCRIPT],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.PHP, TAGS.MYSQL, TAGS.POSTMAN, TAGS.SWAGGER, TAGS.GITHUB, TAGS.AZUREDEVOPS],
   },
   {
     title: "Sistema de Cartografía para Vehículos Movilcar",
     description:
-      "Mejoré el software de cartografía utilizado en vehículos Movilcar, integrando ArcGIS, AutoCAD y bases de datos SQL. Este proyecto optimizó el posicionamiento de vehículos capturados en un 50%, mejorando la precisión y la funcionalidad del sistema.",
+      "Mejoré el software de cartografía utilizado en vehículos Movilcar, integrando ArcGIS y AutoCAD para mapas cartográficos GPS, junto con Microsoft SQL Server para analizar datos y optimizar estructuras de bases de datos. Utilicé FileZilla para la transferencia de archivos y GitHub para el control de versiones. Este proyecto incrementó la precisión del posicionamiento de vehículos en un 50%.",
     image: "/projects/cartografia.webp",
-    tags: [TAGS.ARCGIS, TAGS.MYSQL],
+    tags: [TAGS.ARCGIS, TAGS.AUTOCAD, TAGS.MSSQL, TAGS.FILEZILLA, TAGS.GITHUB],
   },
   {
     title: "Sistema de Monitorización con Grafana",
     description:
-      "Diseñé e implementé un sistema de monitorización basado en Grafana para visualizar datos SQL, permitiendo un seguimiento en tiempo real de métricas críticas. Este proyecto mejoró la visibilidad y la toma de decisiones en los procesos internos.",
+      "Diseñé e implementé un sistema de monitorización basado en Grafana para visualizar datos de Microsoft SQL Server, creando consultas y procedimientos almacenados para análisis de datos en tiempo real. Utilicé GitHub para gestionar el código y FileZilla para transferencias de archivos. Este sistema mejoró la visibilidad de métricas críticas y la toma de decisiones en los procesos internos.",
     image: "/projects/monitorizacion.webp",
-    tags: [TAGS.GRAFANA, TAGS.MYSQL],
+    tags: [TAGS.GRAFANA, TAGS.MSSQL, TAGS.GITHUB, TAGS.FILEZILLA],
+  },
+  {
+    title: "Automatización de Procesos con n8n",
+    description:
+      "Implementé flujos de automatización de procesos utilizando n8n, integrando scripts en Python para tareas de back-end y conexión con APIs a través de Postman y Swagger. Mantuve aplicaciones en C# .NET para garantizar su correcto funcionamiento. Utilicé Azure DevOps para la gestión de tareas y GitHub para el control de versiones, optimizando flujos de trabajo y reduciendo tiempos de procesamiento.",
+    image: "/projects/automatizacion.webp",
+    tags: [TAGS.N8N, TAGS.PYTHON, TAGS.CSHARP, TAGS.POSTMAN, TAGS.SWAGGER, TAGS.AZUREDEVOPS, TAGS.GITHUB],
   },
 ]
 ---
@@ -64,7 +126,7 @@ const PROJECTS = [
     PROJECTS.map(({ image, title, description, tags }) => (
       <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
         <div class="w-full md:w-1/2">
-          <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:- No hay enlaces disponibles para este proyecto.translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+          <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
             <img alt={title} class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
           </div>
         </div>
@@ -73,7 +135,7 @@ const PROJECTS = [
             {title}
           </h3>
           <div class="flex flex-wrap mt-2">
-            <ul class="flex flex-row mb-2 gap-x-2">
+            <ul class="flex flex-row mb-2 gap-x-2 flex-wrap">
               {tags.map((tag) => (
                 <li>
                   <span

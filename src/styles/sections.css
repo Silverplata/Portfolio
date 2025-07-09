@@ -21,7 +21,7 @@
   margin: 0 auto;
   text-align: center;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(16, 185, 129, 0.1); /* Tono claro derivado de --primary */
   border-radius: 1rem;
   backdrop-filter: blur(5px);
 }
@@ -82,7 +82,7 @@
   position: relative;
   margin: 0 2rem 3rem;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(16, 185, 129, 0.1); /* Tono claro derivado de --primary */
   border-radius: 1rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -245,7 +245,7 @@
 
 .skill-card {
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(139, 92, 246, 0.1); /* Tono claro derivado de --secondary */
   border-radius: 1rem;
   backdrop-filter: blur(5px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -299,7 +299,7 @@
   position: relative;
   margin: 0 2rem 3rem;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(16, 185, 129, 0.1); /* Tono claro derivado de --primary */
   border-radius: 1rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;

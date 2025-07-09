@@ -1,0 +1,44 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+const EXPERIENCE = [
+  {
+    date: "Actualmente...",
+    title: "Desarrollador FullStack",
+    company: "Utedevas",
+    description:
+      "Diseño y desarrollo de aplicaciones web interactivas para creacion incidencias en departamentos helpdesk, inventario de material y monitorizacion varios. Diseñé modelos de base de datos y optimicé consultas SQL, mejorando el rendimiento de las consultas un 15%.",
+      
+  },
+  {
+    date: "Abr 2009 – Sept 2011",
+    title: "Administrador de Sistemas",
+    company: "T-System",
+    description:
+      "Resolución de incidencias y soporte técnico",
+  },
+  {
+    date: "Sept 2009 - Abr 2010",
+    title: "Administrador de Sistemas",
+    company: "British Telecom",
+    description:
+      "Mantenimiento y gestión de servidores Windows y Linux. Monitorización de alertas a través de System Center Operations Manager 2007.",
+  },
+  {
+    date: "Sept 2005 - Nov 2006",
+    title: "Analisis Técnico",
+    company: "Ansib Net Solutions",
+    description:
+      "Monitorización, consultas SQL e incidencias.",
+  }
+]
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>

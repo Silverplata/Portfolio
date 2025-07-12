@@ -1,95 +1,132 @@
 ---
-import CodeIcon from "./icons/CodeIcon.astro"
+import HTMLIcon from "./icons/HTMLIcon.astro";
+import CSSIcon from "./icons/CSSIcon.astro";
+import JavaScriptIcon from "./icons/JavaScriptIcon.astro";
+import CSHARPIcon from "./icons/CSHARPIcon.astro";
+import PHPIcon from "./icons/PHPIcon.astro";
+import PythonIcon from "./icons/PythonIcon.astro";
+import MSSQLIcon from "./icons/MSSQLIcon.astro";
+import MySQLIcon from "./icons/MySQLIcon.astro";
+import PostmanIcon from "./icons/PostmanIcon.astro";
+import SwaggerIcon from "./icons/SwaggerIcon.astro";
+import AzureDevOpsIcon from "./icons/AzureDevOpsIcon.astro";
+import GrafanaIcon from "./icons/GrafanaIcon.astro";
+import GitHubIcon from "./icons/GitHubIcon.astro";
+import FileZillaIcon from "./icons/FileZillaIcon.astro";
+import AutoCADIcon from "./icons/AutoCADIcon.astro";
+import ArcGISIcon from "./icons/ArcGISIcon.astro";
+import N8NIcon from "./icons/N8NIcon.astro";
+import NodeJSIcon from "./icons/NodeJSIcon.astro";
+import CloudinaryIcon from "./icons/CloudinaryIcon.astro";
 
 const TAGS = {
   HTML: {
     name: "HTML",
     class: "project-tag bg-orange-500 text-white",
-    icon: CodeIcon,
+    icon: HTMLIcon,
   },
   CSS: {
     name: "CSS",
     class: "project-tag bg-blue-500 text-white",
-    icon: CodeIcon,
+    icon: CSSIcon,
   },
   JAVASCRIPT: {
     name: "JavaScript",
-    class: "project-tag bg-yellow-500 text-black",
-    icon: CodeIcon,
+    class: "project-tag bg-yellow-500 text-[#0f172a]", // Texto oscuro para modo claro
+    icon: JavaScriptIcon,
   },
   CSHARP: {
     name: "C# .NET",
     class: "project-tag bg-purple-600 text-white",
-    icon: CodeIcon,
+    icon: CSHARPIcon,
   },
   PHP: {
     name: "PHP",
     class: "project-tag bg-blue-600 text-white",
-    icon: CodeIcon,
+    icon: PHPIcon,
   },
   PYTHON: {
     name: "Python",
     class: "project-tag bg-blue-800 text-white",
-    icon: CodeIcon,
+    icon: PythonIcon,
   },
   MSSQL: {
     name: "Microsoft SQL Server",
     class: "project-tag bg-gray-600 text-white",
-    icon: CodeIcon,
+    icon: MSSQLIcon,
   },
   MYSQL: {
     name: "MySQL",
     class: "project-tag bg-gray-600 text-white",
-    icon: CodeIcon,
+    icon: MySQLIcon,
   },
   POSTMAN: {
     name: "Postman API",
     class: "project-tag bg-orange-600 text-white",
-    icon: CodeIcon,
+    icon: PostmanIcon,
   },
   SWAGGER: {
     name: "Swagger API",
     class: "project-tag bg-green-500 text-white",
-    icon: CodeIcon,
+    icon: SwaggerIcon,
   },
   AZUREDEVOPS: {
     name: "Azure DevOps",
     class: "project-tag bg-blue-700 text-white",
-    icon: CodeIcon,
+    icon: AzureDevOpsIcon,
   },
   GRAFANA: {
     name: "Grafana",
     class: "project-tag bg-orange-500 text-white",
-    icon: CodeIcon,
+    icon: GrafanaIcon,
   },
   GITHUB: {
     name: "GitHub",
     class: "project-tag bg-gray-800 text-white",
-    icon: CodeIcon,
+    icon: GitHubIcon,
   },
   FILEZILLA: {
     name: "FileZilla",
     class: "project-tag bg-green-600 text-white",
-    icon: CodeIcon,
+    icon: FileZillaIcon,
   },
   AUTOCAD: {
     name: "AutoCAD",
     class: "project-tag bg-red-600 text-white",
-    icon: CodeIcon,
+    icon: AutoCADIcon,
   },
   ARCGIS: {
     name: "ArcGIS",
     class: "project-tag bg-green-600 text-white",
-    icon: CodeIcon,
+    icon: ArcGISIcon,
   },
   N8N: {
     name: "n8n",
     class: "project-tag bg-purple-500 text-white",
-    icon: CodeIcon,
+    icon: N8NIcon,
+  },
+  NODEJS: {
+    name: "Node.js",
+    class: "project-tag bg-green-700 text-white",
+    icon: NodeJSIcon,
+  },
+  CLOUDINARY: {
+    name: "Cloudinary",
+    class: "project-tag bg-blue-600 text-white",
+    icon: CloudinaryIcon,
   },
 }
 
 const PROJECTS = [
+  {
+    title: "NeuroPlanner - Planificador de Rutinas Semanales",
+    description:
+      "Coordiné y desarrollé un planificador de rutinas semanales para personas con TDAH/TEA en el Máster Full Stack Developer. Mantuve el diagrama técnico en Excalidraw, configuré MySQL en Aiven para la base de datos, integré Cloudinary para gestión de imágenes, documenté la API con Swagger, and gestioné el repositorio en GitHub, asegurando sincronización entre equipos de frontend y backend.",
+    image: "/projects/neuroplanner.png",
+    frontendLink: "https://github.com/Silverplata/tfm_unir.git",
+    backendLink: "https://github.com/Silverplata/tfm-node.git",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.MYSQL, TAGS.NODEJS, TAGS.SWAGGER, TAGS.CLOUDINARY, TAGS.GITHUB],
+  },
   {
     title: "Intranet de Análisis de Datos - Utedevas",
     description:
@@ -121,29 +158,72 @@ const PROJECTS = [
 ]
 ---
 
-<div class="flex flex-col gap-y-16">
-  {
-    PROJECTS.map(({ image, title, description, tags }) => (
-      <article class="project-card">
-        <div class="w-full md:w-1/2 project-image-container">
-          <img class="project-image" alt={title} loading="lazy" src={image} />
-        </div>
-        <div class="w-full md:w-1/2 md:max-w-lg project-content">
-          <h3 class="text-gradient">{title}</h3>
-          <div class="project-tags">
-            {tags.map((tag) => (
-              <span class={tag.class}>
-                <tag.icon class="size-4" />
-                {tag.name}
-              </span>
-            ))}
+<section class="section">
+  <h2 class="text-3xl font-bold text-center mb-12">Proyectos</h2>
+  <div class="flex flex-col gap-y-16">
+    {
+      PROJECTS.map(({ image, title, description, tags, frontendLink, backendLink }) => (
+        <article class="project-card">
+          <div class="w-full md:w-1/2 project-image-container">
+            <img class="project-image" alt={title} loading="lazy" src={image} />
           </div>
-          <div class="description">{description}</div>
-          <footer class="mt-4">
-            <span class="text-sm text-gray-500 dark:text-gray-400">No hay enlaces disponibles para este proyecto.</span>
-          </footer>
-        </div>
-      </article>
-    ))
+          <div class="w-full md:w-1/2 md:max-w-lg project-content">
+            <h3>{title}</h3>
+            <div class="project-tags">
+              {tags.map((tag) => (
+                <span class={tag.class}>
+                  <tag.icon class="size-4" />
+                  {tag.name}
+                </span>
+              ))}
+            </div>
+            <div class="description">{description}</div>
+            <footer class="mt-4 flex gap-4">
+              {frontendLink ? (
+                <a href={frontendLink} class="text-sm font-semibold text-[#0f172a] hover:underline dark:text-[var(--primary)]" target="_blank" rel="noopener noreferrer">
+                  Ver Frontend en GitHub
+                </a>
+              ) : null}
+              {backendLink ? (
+                <a href={backendLink} class="text-sm font-semibold text-[#0f172a] hover:underline dark:text-[var(--primary)]" target="_blank" rel="noopener noreferrer">
+                  Ver Backend en GitHub
+                </a>
+              ) : null}
+              {!frontendLink && !backendLink ? (
+                <span class="text-sm text-gray-500 dark:text-gray-400">No hay enlaces disponibles para este proyecto.</span>
+              ) : null}
+            </footer>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  h2 {
+    color: #0f172a; /* Más oscuro para modo claro */
   }
-</div>
+  .dark h2 {
+    color: var(--text-dark);
+  }
+  .project-content h3 {
+    color: #0f172a; /* Más oscuro para modo claro */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+  .dark .project-content h3 {
+    color: var(--text-dark);
+  }
+  .project-tags {
+    margin: 0.5rem 0;
+  }
+  .project-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem; /* Espacio entre ícono y texto */
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+</style>

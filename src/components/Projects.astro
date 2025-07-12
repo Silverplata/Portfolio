@@ -172,7 +172,7 @@ const PROJECTS = [
             <div class="project-tags">
               {tags.map((tag) => (
                 <span class={tag.class}>
-                  <tag.icon class="size-4" />
+                  <tag.icon />
                   {tag.name}
                 </span>
               ))}
@@ -222,8 +222,14 @@ const PROJECTS = [
   .project-tag {
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem; /* Espacio entre ícono y texto */
+    gap: 0.5rem; /* Aumenta el espacio */
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
+  }
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
   }
 </style>

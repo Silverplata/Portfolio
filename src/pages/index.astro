@@ -7,16 +7,63 @@ import Projects from '@/components/Projects.astro'
 import SectionContainer from '@/components/SectionContainer.astro'
 import TitleSection from '@/components/TitleSection.astro'
 import Briefcase from '@/components/icons/Briefcase.astro'
-import CodeIcon from '@/components/icons/Code.astro'
+import CodeIcon from '@/components/icons/CodeIcon.astro'
 import GraduationCap from '@/components/icons/GraduationCap.astro'
+import HTMLIcon from '@/components/icons/HTMLIcon.astro'
+import CSSIcon from '@/components/icons/CSSIcon.astro'
+import JavaScriptIcon from '@/components/icons/JavaScriptIcon.astro'
+import PHPIcon from '@/components/icons/PHPIcon.astro'
+import PythonIcon from '@/components/icons/PythonIcon.astro'
+import DotNETIcon from '@/components/icons/DotnetIcon.astro'
+import AngularIcon from '@/components/icons/AngularIcon.astro'
+import SQLServerIcon from '@/components/icons/MSSQLIcon.astro'
+import MySQLIcon from '@/components/icons/MySQLIcon.astro'
+import MongoDBIcon from '@/components/icons/MongoIcon.astro'
+import GitIcon from '@/components/icons/GitHubIcon.astro'
+import NodeJSIcon from '@/components/icons/NodeJSIcon.astro'
+import AzureDevOpsIcon from '@/components/icons/AzureDevOpsIcon.astro'
+import AstroIcon from '@/components/icons/AstroIcon.astro'
 
 const SKILLS = [
-  { category: 'Lenguajes de Programación (Front-end)', items: ['HTML', 'CSS', 'AJAX', 'JavaScript'] },
-  { category: 'Lenguajes de Programación (Back-end)', items: ['PHP', 'Python', '.NET'] },
-  { category: 'Frameworks (Front-end)', items: ['Angular'] },
-  { category: 'Frameworks (Back-end)', items: ['Express.js'] },
-  { category: 'Bases de Datos', items: ['SQL (SQL Server, MySQL)', 'NoSQL (MongoDB)'] },
-  { category: 'Control de Versiones', items: ['Git'] },
+  {
+    category: 'Lenguajes (Front-end)',
+    items: [
+      { name: 'HTML', icon: HTMLIcon },
+      { name: 'CSS', icon: CSSIcon },
+      { name: 'JavaScript', icon: JavaScriptIcon }
+    ],
+  },
+  {
+    category: 'Lenguajes (Back-end)',
+    items: [
+      { name: 'PHP', icon: PHPIcon },
+      { name: 'Python', icon: PythonIcon },
+      { name: 'C#', icon: DotNETIcon },
+    ],
+  },
+  {
+    category: 'Frameworks',
+    items: [
+      { name: 'Angular', icon: AngularIcon },
+      { name: 'Node.js', icon: NodeJSIcon },
+      { name: 'Astro', icon: AstroIcon }
+    ],
+  },
+  {
+    category: 'Bases de Datos',
+    items: [
+      { name: 'SQL Server', icon: SQLServerIcon },
+      { name: 'MySQL', icon: MySQLIcon },
+      { name: 'MongoDB', icon: MongoDBIcon }
+    ],
+  },
+  {
+    category: 'Control de Versiones',
+    items: [
+      { name: 'Git', icon: GitIcon },
+      { name: 'Azure', icon: AzureDevOpsIcon }
+    ],
+  },
 ]
 
 const EDUCATION = [
@@ -57,12 +104,12 @@ const EDUCATION = [
   title="Portfolio de Jesús Plata"
   description="Portfolio profesional de Jesús Plata, Desarrollador Full Stack con más de 10 años de experiencia en desarrollo web, administración de sistemas y bases de datos."
 >
-  <main class="px-4">
-    <SectionContainer class="py-16 md:py-36">
+  <main class="container">
+    <SectionContainer class="section py-16 md:py-36 hero">
       <Hero />
     </SectionContainer>
 
-    <SectionContainer id="sobre-mi" class="pb-16 md:pb-20">
+    <SectionContainer id="sobre-mi" class="section pb-16 md:pb-20">
       <TitleSection>
         <GraduationCap class="size-8" />
         Sobre mí
@@ -70,7 +117,7 @@ const EDUCATION = [
       <AboutMe />
     </SectionContainer>
 
-    <SectionContainer id="experiencia" class="pb-16 md:pb-20">
+    <SectionContainer id="experiencia" class="section pb-16 md:pb-20">
       <TitleSection>
         <Briefcase class="size-7" />
         Experiencia Laboral
@@ -78,7 +125,7 @@ const EDUCATION = [
       <Experience />
     </SectionContainer>
 
-    <SectionContainer id="proyectos" class="pb-16 md:pb-20">
+    <SectionContainer id="proyectos" class="section pb-16 md:pb-20">
       <TitleSection>
         <CodeIcon class="size-7" />
         Proyectos
@@ -86,18 +133,21 @@ const EDUCATION = [
       <Projects />
     </SectionContainer>
 
-    <SectionContainer id="habilidades" class="pb-16 md:pb-20">
+    <SectionContainer id="habilidades" class="section pb-16 md:pb-20">
       <TitleSection>
         <CodeIcon class="size-7" />
         Habilidades Técnicas
       </TitleSection>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="skills-grid">
         {SKILLS.map((skill) => (
-          <div class="bg-gray-100 dark:bg-gray-800 p-6 rounded-xl shadow-sm">
-            <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3">{skill.category}</h3>
-            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300">
+          <div class="skill-card">
+            <h3>{skill.category}</h3>
+            <ul>
               {skill.items.map((item) => (
-                <li>{item}</li>
+                <li class="flex items-center gap-2">
+                  <item.icon />
+                  {item.name}
+                </li>
               ))}
             </ul>
           </div>
@@ -105,24 +155,24 @@ const EDUCATION = [
       </div>
     </SectionContainer>
 
-    <SectionContainer id="educacion" class="pb-16 md:pb-20">
+    <SectionContainer id="educacion" class="section pb-16 md:pb-20">
       <TitleSection>
         <GraduationCap class="size-8" />
         Educación
       </TitleSection>
-      <ol class="relative mt-16">
+      <ol class="education-timeline">
         {EDUCATION.map((edu) => (
-          <li class="">
-            <div class="relative mx-12 pb-12 grid before:absolute before:left-[-35px] before:block before:h-full before:border-l-2 before:border-black/20 dark:before:border-white/15 before:content-[''] md:grid-cols-5 md:gap-10 md:space-x-4">
+          <li class="education-item">
+            <div class="grid md:grid-cols-5 md:gap-10 md:space-x-4">
               <div class="relative pb-12 md:col-span-2">
                 <div class="sticky top-0">
-                  <span class="text-yellow-400 -left-[42px] absolute rounded-full text-5xl">•</span>
-                  <h3 class="text-xl font-bold text-yellow-400">{edu.title}</h3>
-                  <h4 class="font-semibold text-xl text-gray-600 dark:text-white">{edu.institution}</h4>
-                  <time class="p-0 m-0 text-sm text-gray-600/80 dark:text-white/80">{edu.date}</time>
+                  <span class="dot"></span>
+                  <h3>{edu.title}</h3>
+                  <h4>{edu.institution}</h4>
+                  <time>{edu.date}</time>
                 </div>
               </div>
-              <div class="relative flex flex-col gap-2 pb-4 text-gray-600 dark:text-gray-300 md:col-span-3">
+              <div class="relative flex flex-col gap-2 pb-4 md:col-span-3">
                 {/* Add description if needed */}
               </div>
             </div>
@@ -134,10 +184,50 @@ const EDUCATION = [
 </Layout>
 
 <style>
-  main {
-    @apply mx-auto max-w-4xl;
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
   }
-  section {
-    @apply transition-opacity duration-500;
+  .skill-card {
+    background-color: #f3e8ff; /* Lila claro para modo claro */
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+  }
+  .dark .skill-card {
+    background-color: #1e293b; /* Gris azulado para modo oscuro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  .skill-card h3 {
+    color: #0f172a; /* Más oscuro para modo claro */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-wrap: balance;
+  }
+  .dark .skill-card h3 {
+    color: var(--text-dark);
+  }
+  .skill-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .skill-card li {
+    color: #0f172a; /* Más oscuro para modo claro */
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .dark .skill-card li {
+    color: var(--text-dark);
+  }
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
   }
 </style>

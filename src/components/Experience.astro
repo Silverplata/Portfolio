@@ -7,7 +7,7 @@ const EXPERIENCE = [
     title: "Desarrollador FullStack",
     company: "Utedevas, Madrid, España",
     description:
-      "Desarrollé una plataforma web de intranet de análisis de datos con HTML, CSS, PHP, JavaScript, MySQL y servicios web SOAP, creando dashboards personalizados por departamento, mejorando la experiencia del usuario e incrementando la eficiencia en la toma de decisiones en un 35%. Diseñé y desarrollé aplicaciones web interactivas para creación de incidencias en departamentos de helpdesk, inventario de material y monitorización. Coordiné y supervisé tareas en un equipo ágil utilizando Azure DevOps con metodología Scrum, optimizando flujos de trabajo. Implementé scripts en Shell, SQL y Python para automatización de procesos. Mejoré el software de cartografía en vehículos Movilcar con ArcGIS, AutoCAD y bases de datos SQL, mejorando el posicionamiento en un 50%. Diseñé modelos de bases de datos y optimicé consultas SQL, mejorando el rendimiento un 15%. Proporcioné soporte técnico, diseñé UI/UX y mantuve aplicaciones web para garantizar seguridad y rendimiento. Implementé un sistema de monitorización con Grafana para visualizar datos SQL.",
+      "Desarrollé y mantuve una plataforma web de intranet de análisis de datos con HTML, CSS, PHP, JavaScript, MySQL y servicios web SOAP, creando dashboards personalizados por departamento, mejorando la experiencia del usuario e incrementando la eficiencia en la toma de decisiones en un 35%. Diseñé y desarrollé aplicaciones web interactivas para creación de incidencias en departamentos de helpdesk, inventario de material y monitorización. Coordiné y supervisé tareas en un equipo ágil utilizando Azure DevOps con metodología Scrum, optimizando flujos de trabajo. Implementé scripts en Shell, SQL y Python para automatización de procesos. Mejoré el software de cartografía en vehículos Movilcar con ArcGIS, AutoCAD y bases de datos SQL, mejorando el posicionamiento en un 50%. Diseñé modelos de bases de datos y optimicé consultas SQL, mejorando el rendimiento un 15%. Proporcioné soporte técnico, diseñé UI/UX y mantuve aplicaciones web para garantizar seguridad y rendimiento. Implementé un sistema de monitorización con Grafana para visualizar datos SQL.",
   },
   {
     date: "Abr 2009 – Sept 2011",
@@ -33,10 +33,10 @@ const EXPERIENCE = [
 ]
 ---
 
-<ol class="relative mt-16">
+<ol class="experience-timeline">
   {
     EXPERIENCE.map((experience) => (
-      <li class="">
+      <li class="experience-item">
         <ExperienceItem {...experience} />
       </li>
     ))

@@ -1,17 +1,14 @@
 ---
-import Sun from './icons/Sun.astro';
-import Moon from './icons/Moon.astro';
 ---
 
-<button id="theme-toggle" aria-label="Alternar tema" class="theme-toggle">
+<label class="switch" id="theme-toggle" aria-label="Alternar tema">
+  <input type="checkbox" id="theme-toggle-input">
   <span class="slider"></span>
-  <span class="icon sun"><Sun /></span>
-  <span class="icon moon"><Moon /></span>
-</button>
+</label>
 
 <script>
   const html = document.documentElement;
-  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleInput = document.getElementById('theme-toggle-input') as HTMLInputElement;
 
   // Definir el tipo de theme explícitamente
   type Theme = 'light' | 'dark';
@@ -20,9 +17,9 @@ import Moon from './icons/Moon.astro';
     html.classList.remove('light', 'dark');
     html.classList.add(theme);
     localStorage.setItem('theme', theme);
-    // Actualizar el estado visual del toggle
-    if (themeToggle) {
-      themeToggle.setAttribute('data-theme', theme);
+    if (themeToggleInput) {
+      themeToggleInput.checked = theme === 'dark';
+      themeToggleInput.parentElement?.setAttribute('data-theme', theme);
     }
   };
 
@@ -37,93 +34,148 @@ import Moon from './icons/Moon.astro';
     setTheme(theme);
   };
 
-  // Verificar que el botón exista antes de añadir el event listener
-  if (themeToggle instanceof HTMLElement) {
-    themeToggle.addEventListener('click', toggleTheme);
+  if (themeToggleInput) {
+    themeToggleInput.addEventListener('change', toggleTheme);
+    initializeTheme();
   } else {
-    console.error('No se encontró el botón con ID "theme-toggle"');
+    console.error('No se encontró el input con ID "theme-toggle-input"');
   }
-
-  initializeTheme();
 </script>
 
 <style>
-  .theme-toggle {
+  .switch {
+    font-size: 16px; /* Base para escalar */
     position: relative;
-    display: inline-flex;
-    align-items: center;
-    width: 3rem; /* 48px */
-    height: 1.5rem; /* 24px */
-    background-color: #d1d5db; /* Gris claro para fondo inactivo */
-    border-radius: 9999px; /* Bordes completamente redondeados */
-    padding: 0.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    display: inline-block;
+    width: 4rem; /* 64px */
+    height: 2rem; /* 32px */
   }
 
-  .theme-toggle[data-theme="dark"] {
-    background-color: #4b5563; /* Gris oscuro para modo oscuro */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
   }
 
   .slider {
     position: absolute;
-    width: 1rem; /* 16px, reducido para evitar superposición */
-    height: 1rem; /* 16px */
-    background-color: rgba(255, 255, 255, 0.9); /* Fondo semitransparente */
-    border-radius: 50%;
-    transform: translateX(0);
-    transition: transform 0.3s ease;
-    z-index: 1; /* Asegurar que esté debajo de los íconos */
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #e5e7eb, #d1d5db); /* Claro, alineado con #f3e8ff */
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow:
+      inset 0 0 10px rgba(0, 0, 0, 0.1),
+      inset 0 0 20px rgba(0, 0, 0, 0.05),
+      0 0 15px rgba(0, 0, 0, 0.05);
   }
 
-  .theme-toggle[data-theme="dark"] .slider {
-    transform: translateX(1.6rem); /* Ajustado para dejar espacio al ícono */
+  .switch[data-theme="dark"] .slider {
+    background: linear-gradient(135deg, #1a003f, #08001a); /* Oscuro, cósmico */
   }
 
-  .icon {
+  .slider::before {
+    content: "";
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1rem; /* 16px */
-    height: 1rem;
-    z-index: 2; /* Íconos por encima del slider */
-    transition: opacity 0.3s ease;
-  }
-
-  .sun {
-    opacity: 1;
-    left: 0.3rem; /* Ajustado para centrar en el toggle */
-  }
-
-  .moon {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(circle, rgba(255, 255, 255, 0.7) 1px, transparent 1px) 0 0,
+      radial-gradient(circle, rgba(255, 255, 255, 0.4) 1px, transparent 1px) 8px 8px,
+      radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px) 16px 16px;
+    background-size: 24px 24px, 32px 32px, 40px 40px;
+    animation: stars-move 20s linear infinite, stars-twinkle 4s ease-in-out infinite;
     opacity: 0;
-    right: 0.3rem; /* Ajustado para evitar superposición */
+    transition: opacity 0.6s ease;
   }
 
-  .theme-toggle[data-theme="dark"] .sun {
-    opacity: 0;
-  }
-
-  .theme-toggle[data-theme="dark"] .moon {
+  .switch[data-theme="dark"] .slider::before {
     opacity: 1;
   }
 
-  .theme-toggle:hover {
-    background-color: #2563eb; /* Azul para hover, alineado con nav */
+  @keyframes stars-move {
+    from {
+      transform: translateX(0) translateY(0);
+    }
+    to {
+      transform: translateX(-12px) translateY(-8px);
+    }
   }
 
-  svg {
-    width: 1rem; /* 16px, tamaño consistente */
-    height: 1rem;
-    fill: currentColor; /* Hereda color del contexto */
+  @keyframes stars-twinkle {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
   }
 
-  .theme-toggle[data-theme="light"] svg {
-    color: #0f172a; /* Color de los íconos en modo claro */
+  .slider::after {
+    position: absolute;
+    content: "";
+    height: 1.5rem; /* 24px */
+    width: 1.5rem; /* 24px */
+    border-radius: 50%;
+    background: radial-gradient(circle, #ff7f00, #ffa500); /* Sol */
+    top: 0.25rem;
+    left: 0.25rem;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    box-shadow:
+      0 0 10px rgba(255, 165, 0, 0.6),
+      0 0 20px rgba(255, 165, 0, 0.3);
   }
 
-  .theme-toggle[data-theme="dark"] svg {
-    color: #e2e8f0; /* Color de los íconos en modo oscuro */
+  .switch[data-theme="dark"] .slider::after {
+    background: radial-gradient(circle, #d3d3d3, #a9a9a9); /* Luna */
+    transform: translateX(2rem); /* 32px */
+    box-shadow:
+      0 0 10px rgba(255, 255, 255, 0.6),
+      0 0 20px rgba(255, 255, 255, 0.3);
+  }
+
+  .slider::after::before {
+    content: "";
+    position: absolute;
+    width: 0.3rem; /* 4.8px */
+    height: 0.3rem;
+    background: rgba(136, 136, 136, 0.8);
+    border-radius: 50%;
+    top: 0.4rem;
+    left: 0.6rem;
+    box-shadow:
+      0.45rem 0.2rem 0 0 rgba(136, 136, 136, 0.8),
+      -0.2rem -0.3rem 0 0 rgba(136, 136, 136, 0.8);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .switch[data-theme="dark"] .slider::after::before {
+    opacity: 1;
+  }
+
+  .switch input:focus + .slider {
+    outline: none;
+    box-shadow:
+      0 0 20px rgba(255, 255, 255, 0.6),
+      0 0 40px rgba(255, 255, 255, 0.3);
+  }
+
+  .slider:hover {
+    box-shadow:
+      inset 0 0 15px rgba(255, 255, 255, 0.3),
+      inset 0 0 30px rgba(255, 255, 255, 0.15),
+      0 0 20px rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, #2563eb, #1e40af); /* Hover azul */
+  }
+
+  .switch[data-theme="dark"] .slider:hover {
+    background: linear-gradient(135deg, #1a003f, #08001a);
   }
 </style>

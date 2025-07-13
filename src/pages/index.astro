@@ -9,14 +9,64 @@ import TitleSection from '@/components/TitleSection.astro'
 import Briefcase from '@/components/icons/Briefcase.astro'
 import CodeIcon from '@/components/icons/CodeIcon.astro'
 import GraduationCap from '@/components/icons/GraduationCap.astro'
+import HTMLIcon from '@/components/icons/HTMLIcon.astro'
+import CSSIcon from '@/components/icons/CSSIcon.astro'
+import JavaScriptIcon from '@/components/icons/JavaScriptIcon.astro'
+import AJAXIcon from '@/components/icons/AjaxIcon.astro'
+import PHPIcon from '@/components/icons/PHPIcon.astro'
+import PythonIcon from '@/components/icons/PythonIcon.astro'
+import DotNETIcon from '@/components/icons/DotnetIcon.astro'
+import AngularIcon from '@/components/icons/AngularIcon.astro'
+import SQLServerIcon from '@/components/icons/MSSQLIcon.astro'
+import MySQLIcon from '@/components/icons/MySQLIcon.astro'
+import MongoDBIcon from '@/components/icons/MongoIcon.astro'
+import GitIcon from '@/components/icons/GitHubIcon.astro'
+import NodeJSIcon from '@/components/icons/NodeJSIcon.astro'
+import AzureDevOpsIcon from '@/components/icons/AzureDevOpsIcon.astro'
 
 const SKILLS = [
-  { category: 'Lenguajes de Programación (Front-end)', items: ['HTML', 'CSS', 'AJAX', 'JavaScript'] },
-  { category: 'Lenguajes de Programación (Back-end)', items: ['PHP', 'Python', '.NET'] },
-  { category: 'Frameworks (Front-end)', items: ['Angular'] },
-  { category: 'Frameworks (Back-end)', items: ['Express.js'] },
-  { category: 'Bases de Datos', items: ['SQL (SQL Server, MySQL)', 'NoSQL (MongoDB)'] },
-  { category: 'Control de Versiones', items: ['Git'] },
+  {
+    category: 'Lenguajes (Front-end)',
+    items: [
+      { name: 'HTML', icon: HTMLIcon },
+      { name: 'CSS', icon: CSSIcon },
+      { name: 'AJAX', icon: AJAXIcon },
+      { name: 'JavaScript', icon: JavaScriptIcon }
+    ],
+  },
+  {
+    category: 'Lenguajes (Back-end)',
+    items: [
+      { name: 'PHP', icon: PHPIcon },
+      { name: 'Python', icon: PythonIcon }      
+    ],
+  },
+  {
+    category: 'Frameworks (Front-end)',
+    items: [{ name: 'Angular', icon: AngularIcon }],
+  },
+  {
+    category: 'Frameworks (Back-end)',
+    items: [
+      { name: 'NodeJS', icon: NodeJSIcon },
+      { name: '.NET', icon: DotNETIcon }
+    ],
+  },
+  {
+    category: 'Bases de Datos',
+    items: [
+      { name: 'SQL Server', icon: SQLServerIcon },
+      { name: 'Mysql', icon: MySQLIcon },
+      { name: 'MongoDB', icon: MongoDBIcon }
+    ],
+  },
+  {
+    category: 'Control de Versiones',
+    items: [
+      { name: 'Git', icon: GitIcon },
+      { name: 'Azure', icon: AzureDevOpsIcon }
+    ],
+  },
 ]
 
 const EDUCATION = [
@@ -97,7 +147,10 @@ const EDUCATION = [
             <h3>{skill.category}</h3>
             <ul>
               {skill.items.map((item) => (
-                <li>{item}</li>
+                <li class="flex items-center gap-2">
+                  <item.icon />
+                  {item.name}
+                </li>
               ))}
             </ul>
           </div>
@@ -132,3 +185,51 @@ const EDUCATION = [
     </SectionContainer>
   </main>
 </Layout>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .skill-card {
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .dark .skill-card {
+    background-color: var(--bg-dark);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .skill-card h3 {
+    color: #0f172a; /* Más oscuro para modo claro */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .dark .skill-card h3 {
+    color: var(--text-dark);
+  }
+  .skill-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .skill-card li {
+    color: #0f172a; /* Más oscuro para modo claro */
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .dark .skill-card li {
+    color: var(--text-dark);
+  }
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+  }
+</style>

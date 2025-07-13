@@ -18,6 +18,8 @@ import ArcGISIcon from "./icons/ArcGISIcon.astro";
 import N8NIcon from "./icons/N8NIcon.astro";
 import NodeJSIcon from "./icons/NodeJSIcon.astro";
 import CloudinaryIcon from "./icons/CloudinaryIcon.astro";
+import AngularIcon from "./icons/AngularIcon.astro";
+import DockerIcon from "./icons/DockerIcon.astro";
 
 const TAGS = {
   HTML: {
@@ -39,6 +41,11 @@ const TAGS = {
     name: "C# .NET",
     class: "project-tag bg-purple-600 text-white",
     icon: CSHARPIcon,
+  },
+  ANGULAR: {
+    name: "Angular",
+    class: "project-tag bg-purple-600 text-white",
+    icon: AngularIcon,
   },
   PHP: {
     name: "PHP",
@@ -115,6 +122,11 @@ const TAGS = {
     class: "project-tag bg-blue-600 text-white",
     icon: CloudinaryIcon,
   },
+  DOCKER: {
+    name: "Docker",
+    class: "project-tag bg-blue-600 text-white",
+    icon: DockerIcon,
+  }
 }
 
 const PROJECTS = [
@@ -125,41 +137,41 @@ const PROJECTS = [
     image: "/projects/neuroplanner.png",
     frontendLink: "https://github.com/Silverplata/tfm_unir.git",
     backendLink: "https://github.com/Silverplata/tfm-node.git",
-    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.MYSQL, TAGS.NODEJS, TAGS.SWAGGER, TAGS.CLOUDINARY, TAGS.GITHUB],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.MYSQL, TAGS.ANGULAR, TAGS.NODEJS, TAGS.SWAGGER, TAGS.POSTMAN, TAGS.CLOUDINARY, TAGS.GITHUB],
   },
   {
     title: "Intranet de Análisis de Datos - Utedevas",
     description:
       "Desarrollé y mantuve una plataforma web de intranet para análisis de datos con HTML, CSS, PHP, JavaScript, MySQL y servicios web SOAP, creando dashboards personalizados por departamento, mejorando la experiencia del usuario e incrementando la eficiencia en la toma de decisiones en un 35%. Utilicé Postman y Swagger para pruebas de API, Azure DevOps para coordinar tareas con metodología Scrum, y GitHub para control de versiones.",
     image: "/projects/intranet.webp",
-    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.PHP, TAGS.MYSQL, TAGS.POSTMAN, TAGS.SWAGGER, TAGS.AZUREDEVOPS, TAGS.GITHUB],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.PHP, TAGS.CSHARP, TAGS.MYSQL, TAGS.POSTMAN, TAGS.AZUREDEVOPS, TAGS.GITHUB, TAGS.FILEZILLA],
   },
   {
     title: "Sistema de Cartografía para Vehículos Movilcar",
     description:
       "Mejoré el software de cartografía utilizado en vehículos Movilcar, integrando ArcGIS y AutoCAD para mapas cartográficos GPS, junto con Microsoft SQL Server para analizar datos y optimizar estructuras de bases de datos. Utilicé FileZilla para la transferencia de archivos y GitHub para el control de versiones, incrementando la precisión del posicionamiento en un 50%.",
     image: "/projects/cartografia.webp",
-    tags: [TAGS.ARCGIS, TAGS.AUTOCAD, TAGS.MSSQL, TAGS.FILEZILLA, TAGS.GITHUB],
+    tags: [TAGS.ARCGIS, TAGS.AUTOCAD, TAGS.MSSQL],
   },
   {
     title: "Sistema de Monitorización con Grafana",
     description:
       "Diseñé e implementé un sistema de monitorización basado en Grafana para visualizar datos de Microsoft SQL Server, creando consultas y procedimientos almacenados para análisis en tiempo real. Utilicé GitHub para gestionar el código y FileZilla para transferencias de archivos, mejorando la visibilidad de métricas críticas.",
     image: "/projects/monitorizacion.webp",
-    tags: [TAGS.GRAFANA, TAGS.MSSQL, TAGS.GITHUB, TAGS.FILEZILLA],
+    tags: [TAGS.GRAFANA, TAGS.MSSQL]
   },
   {
     title: "Automatización de Procesos con n8n",
     description:
       "Implementé flujos de automatización con n8n, integrando scripts en Python y conexiones con APIs a través de Postman y Swagger. Mantuve aplicaciones en C# .NET, utilizando Azure DevOps para la gestión de tareas y GitHub para control de versiones, optimizando flujos de trabajo y reduciendo tiempos de procesamiento.",
     image: "/projects/automatizacion.webp",
-    tags: [TAGS.N8N, TAGS.PYTHON, TAGS.CSHARP, TAGS.POSTMAN, TAGS.SWAGGER, TAGS.AZUREDEVOPS, TAGS.GITHUB],
+    tags: [TAGS.N8N, TAGS.PYTHON, TAGS.DOCKER]
   },
 ]
 ---
 
 <section class="section">
-  <h2 class="text-3xl font-bold text-center mb-12">Proyectos</h2>
+
   <div class="flex flex-col gap-y-16">
     {
       PROJECTS.map(({ image, title, description, tags, frontendLink, backendLink }) => (

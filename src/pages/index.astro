@@ -12,7 +12,6 @@ import GraduationCap from '@/components/icons/GraduationCap.astro'
 import HTMLIcon from '@/components/icons/HTMLIcon.astro'
 import CSSIcon from '@/components/icons/CSSIcon.astro'
 import JavaScriptIcon from '@/components/icons/JavaScriptIcon.astro'
-import AJAXIcon from '@/components/icons/AjaxIcon.astro'
 import PHPIcon from '@/components/icons/PHPIcon.astro'
 import PythonIcon from '@/components/icons/PythonIcon.astro'
 import DotNETIcon from '@/components/icons/DotnetIcon.astro'
@@ -23,6 +22,7 @@ import MongoDBIcon from '@/components/icons/MongoIcon.astro'
 import GitIcon from '@/components/icons/GitHubIcon.astro'
 import NodeJSIcon from '@/components/icons/NodeJSIcon.astro'
 import AzureDevOpsIcon from '@/components/icons/AzureDevOpsIcon.astro'
+import AstroIcon from '@/components/icons/AstroIcon.astro'
 
 const SKILLS = [
   {
@@ -30,7 +30,6 @@ const SKILLS = [
     items: [
       { name: 'HTML', icon: HTMLIcon },
       { name: 'CSS', icon: CSSIcon },
-      { name: 'AJAX', icon: AJAXIcon },
       { name: 'JavaScript', icon: JavaScriptIcon }
     ],
   },
@@ -38,25 +37,23 @@ const SKILLS = [
     category: 'Lenguajes (Back-end)',
     items: [
       { name: 'PHP', icon: PHPIcon },
-      { name: 'Python', icon: PythonIcon }      
+      { name: 'Python', icon: PythonIcon },
+      { name: 'C#', icon: DotNETIcon },
     ],
   },
   {
-    category: 'Frameworks (Front-end)',
-    items: [{ name: 'Angular', icon: AngularIcon }],
-  },
-  {
-    category: 'Frameworks (Back-end)',
+    category: 'Frameworks',
     items: [
-      { name: 'NodeJS', icon: NodeJSIcon },
-      { name: '.NET', icon: DotNETIcon }
+      { name: 'Angular', icon: AngularIcon },
+      { name: 'Node.js', icon: NodeJSIcon },
+      { name: 'Astro', icon: AstroIcon }
     ],
   },
   {
     category: 'Bases de Datos',
     items: [
       { name: 'SQL Server', icon: SQLServerIcon },
-      { name: 'Mysql', icon: MySQLIcon },
+      { name: 'MySQL', icon: MySQLIcon },
       { name: 'MongoDB', icon: MongoDBIcon }
     ],
   },
@@ -71,7 +68,7 @@ const SKILLS = [
 
 const EDUCATION = [
   {
-    date: 'Jul 2025 (en progreso)',
+    date: 'Jul 2025',
     title: 'Máster FullStack Developer',
     institution: 'Universidad a distancia UNIR, Madrid, España',
   },
@@ -189,26 +186,27 @@ const EDUCATION = [
 <style>
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
   }
   .skill-card {
-    background-color: #fff;
+    background-color: #f3e8ff; /* Lila claro para modo claro */
     border-radius: 0.5rem;
     padding: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
   }
   .dark .skill-card {
-    background-color: var(--bg-dark);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #1e293b; /* Gris azulado para modo oscuro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
   .skill-card h3 {
     color: #0f172a; /* Más oscuro para modo claro */
     font-family: 'Poppins', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 600;
     margin-bottom: 1rem;
+    text-wrap: balance;
   }
   .dark .skill-card h3 {
     color: var(--text-dark);

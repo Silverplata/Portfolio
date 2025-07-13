@@ -20,6 +20,7 @@ import NodeJSIcon from "./icons/NodeJSIcon.astro";
 import CloudinaryIcon from "./icons/CloudinaryIcon.astro";
 import AngularIcon from "./icons/AngularIcon.astro";
 import DockerIcon from "./icons/DockerIcon.astro";
+import TypescriptIcon from "./icons/TypescriptIcon.astro";
 
 const TAGS = {
   HTML: {
@@ -29,13 +30,18 @@ const TAGS = {
   },
   CSS: {
     name: "CSS",
-    class: "project-tag bg-blue-500 text-white",
+    class: "project-tag bg-purple-500 text-white",
     icon: CSSIcon,
   },
   JAVASCRIPT: {
     name: "JavaScript",
     class: "project-tag bg-yellow-500 text-[#0f172a]", // Texto oscuro para modo claro
     icon: JavaScriptIcon,
+  },
+  TYPESCRIPT: {
+    name: "Typescript",
+    class: "project-tag bg-blue-500 text-[#0f172a]", // Texto oscuro para modo claro
+    icon: TypescriptIcon,
   },
   CSHARP: {
     name: "C# .NET",
@@ -137,7 +143,7 @@ const PROJECTS = [
     image: "/projects/neuroplanner.png",
     frontendLink: "https://github.com/Silverplata/tfm_unir.git",
     backendLink: "https://github.com/Silverplata/tfm-node.git",
-    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.MYSQL, TAGS.ANGULAR, TAGS.NODEJS, TAGS.SWAGGER, TAGS.POSTMAN, TAGS.CLOUDINARY, TAGS.GITHUB],
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.TYPESCRIPT, TAGS.MYSQL, TAGS.ANGULAR, TAGS.NODEJS, TAGS.SWAGGER, TAGS.POSTMAN, TAGS.CLOUDINARY, TAGS.GITHUB],
   },
   {
     title: "Intranet de Análisis de Datos - Utedevas",
@@ -154,17 +160,17 @@ const PROJECTS = [
     tags: [TAGS.ARCGIS, TAGS.AUTOCAD, TAGS.MSSQL],
   },
   {
-    title: "Sistema de Monitorización con Grafana",
+    title: "Sistema de Monitorización",
     description:
       "Diseñé e implementé un sistema de monitorización basado en Grafana para visualizar datos de Microsoft SQL Server, creando consultas y procedimientos almacenados para análisis en tiempo real. Utilicé GitHub para gestionar el código y FileZilla para transferencias de archivos, mejorando la visibilidad de métricas críticas.",
     image: "/projects/monitorizacion.webp",
     tags: [TAGS.GRAFANA, TAGS.MSSQL]
   },
   {
-    title: "Automatización de Procesos con n8n",
+    title: "Automatización imagenes con OCR + IA",
     description:
       "Implementé flujos de automatización con n8n, integrando scripts en Python y conexiones con APIs a través de Postman y Swagger. Mantuve aplicaciones en C# .NET, utilizando Azure DevOps para la gestión de tareas y GitHub para control de versiones, optimizando flujos de trabajo y reduciendo tiempos de procesamiento.",
-    image: "/projects/automatizacion.webp",
+    image: "/projects/n8n.png",
     tags: [TAGS.N8N, TAGS.PYTHON, TAGS.DOCKER]
   },
 ]

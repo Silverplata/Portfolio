@@ -1,80 +1,129 @@
 ---
 import Sun from './icons/Sun.astro';
 import Moon from './icons/Moon.astro';
-import System from './icons/System.astro';
 ---
 
-<div class="theme-toggle">
-  <button id="theme-toggle-light" aria-label="Usar tema claro" class="transition-smooth p-2 rounded-full hover:bg-[var(--primary)] hover:text-white">
-    <Sun />
-  </button>
-  <button id="theme-toggle-dark" aria-label="Usar tema oscuro" class="transition-smooth p-2 rounded-full hover:bg-[var(--primary)] hover:text-white">
-    <Moon />
-  </button>
-  <button id="theme-toggle-system" aria-label="Usar tema del sistema" class="transition-smooth p-2 rounded-full hover:bg-[var(--primary)] hover:text-white">
-    <System />
-  </button>
-</div>
+<button id="theme-toggle" aria-label="Alternar tema" class="theme-toggle">
+  <span class="slider"></span>
+  <span class="icon sun"><Sun /></span>
+  <span class="icon moon"><Moon /></span>
+</button>
 
 <script>
   const html = document.documentElement;
-  const lightButton = document.getElementById('theme-toggle-light');
-  const darkButton = document.getElementById('theme-toggle-dark');
-  const systemButton = document.getElementById('theme-toggle-system');
+  const themeToggle = document.getElementById('theme-toggle');
 
   // Definir el tipo de theme explícitamente
-  type Theme = 'light' | 'dark' | 'system';
+  type Theme = 'light' | 'dark';
 
   const setTheme = (theme: Theme) => {
     html.classList.remove('light', 'dark');
-    if (theme !== 'system') {
-      html.classList.add(theme);
-    }
+    html.classList.add(theme);
     localStorage.setItem('theme', theme);
+    // Actualizar el estado visual del toggle
+    if (themeToggle) {
+      themeToggle.setAttribute('data-theme', theme);
+    }
   };
 
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  const toggleTheme = () => {
+    const currentTheme = html.classList.contains('dark') ? 'light' : 'dark';
+    setTheme(currentTheme);
+  };
 
   const initializeTheme = () => {
-    const savedTheme = localStorage.getItem('theme') as Theme || 'system';
-    if (savedTheme === 'system') {
-      setTheme(prefersDark.matches ? 'dark' : 'light');
-    } else {
-      setTheme(savedTheme);
-    }
+    const savedTheme = localStorage.getItem('theme') as Theme | null;
+    const theme = savedTheme === 'dark' ? 'dark' : 'light';
+    setTheme(theme);
   };
 
-  // Verificar que los botones existan antes de añadir event listeners
-  if (lightButton instanceof HTMLElement) {
-    lightButton.addEventListener('click', () => setTheme('light'));
+  // Verificar que el botón exista antes de añadir el event listener
+  if (themeToggle instanceof HTMLElement) {
+    themeToggle.addEventListener('click', toggleTheme);
   } else {
-    console.error('No se encontró el botón con ID "theme-toggle-light"');
+    console.error('No se encontró el botón con ID "theme-toggle"');
   }
-
-  if (darkButton instanceof HTMLElement) {
-    darkButton.addEventListener('click', () => setTheme('dark'));
-  } else {
-    console.error('No se encontró el botón con ID "theme-toggle-dark"');
-  }
-
-  if (systemButton instanceof HTMLElement) {
-    systemButton.addEventListener('click', () => setTheme('system'));
-  } else {
-    console.error('No se encontró el botón con ID "theme-toggle-system"');
-  }
-
-  prefersDark.addEventListener('change', (e) => {
-    if (localStorage.getItem('theme') === 'system') {
-      setTheme(e.matches ? 'dark' : 'light');
-    }
-  });
 
   initializeTheme();
 </script>
 
 <style>
   .theme-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 3rem; /* 48px */
+    height: 1.5rem; /* 24px */
+    background-color: #d1d5db; /* Gris claro para fondo inactivo */
+    border-radius: 9999px; /* Bordes completamente redondeados */
+    padding: 0.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .theme-toggle[data-theme="dark"] {
+    background-color: #4b5563; /* Gris oscuro para modo oscuro */
+  }
+
+  .slider {
+    position: absolute;
+    width: 1rem; /* 16px, reducido para evitar superposición */
+    height: 1rem; /* 16px */
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo semitransparente */
+    border-radius: 50%;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+    z-index: 1; /* Asegurar que esté debajo de los íconos */
+  }
+
+  .theme-toggle[data-theme="dark"] .slider {
+    transform: translateX(1.6rem); /* Ajustado para dejar espacio al ícono */
+  }
+
+  .icon {
+    position: absolute;
     display: flex;
-    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 1rem; /* 16px */
+    height: 1rem;
+    z-index: 2; /* Íconos por encima del slider */
+    transition: opacity 0.3s ease;
+  }
+
+  .sun {
+    opacity: 1;
+    left: 0.3rem; /* Ajustado para centrar en el toggle */
+  }
+
+  .moon {
+    opacity: 0;
+    right: 0.3rem; /* Ajustado para evitar superposición */
+  }
+
+  .theme-toggle[data-theme="dark"] .sun {
+    opacity: 0;
+  }
+
+  .theme-toggle[data-theme="dark"] .moon {
+    opacity: 1;
+  }
+
+  .theme-toggle:hover {
+    background-color: #2563eb; /* Azul para hover, alineado con nav */
+  }
+
+  svg {
+    width: 1rem; /* 16px, tamaño consistente */
+    height: 1rem;
+    fill: currentColor; /* Hereda color del contexto */
+  }
+
+  .theme-toggle[data-theme="light"] svg {
+    color: #0f172a; /* Color de los íconos en modo claro */
+  }
+
+  .theme-toggle[data-theme="dark"] svg {
+    color: #e2e8f0; /* Color de los íconos en modo oscuro */
   }
 </style>

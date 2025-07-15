@@ -22,6 +22,7 @@ body {
   color: var(--text-light);
   position: relative;
   overflow-x: hidden;
+  padding-top: 3rem; /* Añadido para evitar superposición con header */
 }
 
 /* Fondo animado con degradado */
@@ -36,7 +37,7 @@ body::before {
   background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent-yellow));
   background-size: 200% 200%;
   animation: gradientFlow 15s ease infinite;
-  transition: background 0.5s ease; /* Transición suave al cambiar tema */
+  transition: background 0.5s ease;
 }
 
 @keyframes gradientFlow {

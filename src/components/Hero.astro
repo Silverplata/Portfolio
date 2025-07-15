@@ -1,5 +1,7 @@
 ---
 import avatar from '../assets/avatar.webp';
+import GitHubIcon from './icons/GitHubIcon.astro';
+import LinkedIn from './icons/LinkedIn.astro';
 ---
 
 <section class="hero section">
@@ -13,4 +15,39 @@ import avatar from '../assets/avatar.webp';
   <p class="mt-2">
     Especializado en crear soluciones intuitivas y eficientes, lideré proyectos como una intranet de análisis de datos que mejoró la toma de decisiones en un 35%.
   </p>
+  <div class="social-buttons mt-6 flex justify-center gap-4">
+    <a href="https://github.com/Silverplata" class="social-pill" target="_blank" rel="noopener noreferrer">
+      <GitHubIcon class="size-6 mr-2" />
+      GitHub
+    </a>
+    <a href="https://linkedin.com/in/jesus-plata-quesada-0232a1b3" class="social-pill" target="_blank" rel="noopener noreferrer">
+      <LinkedIn class="size-6 mr-2" />
+      LinkedIn
+    </a>
+  </div>
 </section>
+
+<style>
+  .social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem; /* Espaciado entre botones */
+  }
+  .social-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.25rem;
+  }
+  @media (max-width: 640px) {
+    .social-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    .social-pill {
+      width: 100%;
+      max-width: 12rem; /* Limita el ancho en móviles */
+    }
+  }
+</style>

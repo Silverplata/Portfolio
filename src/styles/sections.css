@@ -18,7 +18,7 @@
 /* Hero Section */
 .hero {
   max-width: 48rem;
-  margin: 0 auto;
+  margin: 3rem auto 0; /* Añadido margin-top: 3rem */
   text-align: center;
   padding: 2rem;
   background: rgba(16, 185, 129, 0.1);
@@ -44,7 +44,7 @@
   font-family: 'Poppins', sans-serif;
   font-size: 2.5rem;
   font-weight: 800;
-  color: #0f172a; /* Más oscuro para modo claro */
+  color: #0f172a;
 }
 
 .dark .hero h1 {
@@ -81,7 +81,7 @@
   font-family: 'Poppins', sans-serif;
   font-size: 2rem;
   font-weight: 700;
-  color: #0f172a; /* Más oscuro para modo claro */
+  color: #0f172a;
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -277,7 +277,7 @@
   font-family: 'Poppins', sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #0f172a; /* Más oscuro para modo claro */
+  color: #0f172a;
 }
 
 .dark .skill-card h3 {

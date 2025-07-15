@@ -7,10 +7,10 @@
 }
 
 .light {
-  --primary: #a7f3d0; /* Verde claro con toque blanco */
-  --secondary: #ddd6fe; /* Púrpura claro con matices blancos */
-  --accent-yellow: #fefcbf; /* Amarillo muy claro con blanco */
-  --glow: rgba(167, 243, 208, 0.5); /* Resplandor suave */
+  --primary: #69bfcaff; /* Verde claro con toque blanco */
+  --secondary: #ffffffff; /* Púrpura claro con matices blancos */
+  --accent-yellow: #86a73bff; /* Amarillo muy claro con blanco */
+  --glow: rgba(101, 111, 241, 0.5); /* Resplandor suave */
 }
 
 .dark {

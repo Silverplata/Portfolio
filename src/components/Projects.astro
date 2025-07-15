@@ -2,7 +2,7 @@
 import HTMLIcon from "./icons/HTMLIcon.astro";
 import CSSIcon from "./icons/CSSIcon.astro";
 import JavaScriptIcon from "./icons/JavaScriptIcon.astro";
-import CSHARPIcon from "./icons/CSHARPIcon.astro";
+import CplusIcon from "./icons/CplusIcon.astro";
 import PHPIcon from "./icons/PHPIcon.astro";
 import PythonIcon from "./icons/PythonIcon.astro";
 import MSSQLIcon from "./icons/MSSQLIcon.astro";
@@ -21,6 +21,7 @@ import CloudinaryIcon from "./icons/CloudinaryIcon.astro";
 import AngularIcon from "./icons/AngularIcon.astro";
 import DockerIcon from "./icons/DockerIcon.astro";
 import TypescriptIcon from "./icons/TypescriptIcon.astro";
+import OpenaiIcon from "./icons/OpenaiIcon.astro";
 
 const TAGS = {
   HTML: {
@@ -43,10 +44,10 @@ const TAGS = {
     class: "project-tag bg-blue-500 text-[#0f172a]", // Texto oscuro para modo claro
     icon: TypescriptIcon,
   },
-  CSHARP: {
+  C: {
     name: "C# .NET",
-    class: "project-tag bg-purple-600 text-white",
-    icon: CSHARPIcon,
+    class: "project-tag bg-blue-500 text-white",
+    icon: CplusIcon,
   },
   ANGULAR: {
     name: "Angular",
@@ -60,7 +61,7 @@ const TAGS = {
   },
   PYTHON: {
     name: "Python",
-    class: "project-tag bg-blue-800 text-white",
+    class: "project-tag bg-blue-600 text-white",
     icon: PythonIcon,
   },
   MSSQL: {
@@ -132,6 +133,11 @@ const TAGS = {
     name: "Docker",
     class: "project-tag bg-blue-600 text-white",
     icon: DockerIcon,
+  },
+  OPENAI: {
+    name: "OpenAI",
+    class: "project-tag bg-purple-600 text-white",
+    icon: OpenaiIcon,
   }
 }
 
@@ -149,30 +155,37 @@ const PROJECTS = [
     title: "Intranet de Análisis de Datos - Utedevas",
     description:
       "Desarrollé y mantuve una plataforma web de intranet para análisis de datos con HTML, CSS, PHP, JavaScript, MySQL y servicios web SOAP, creando dashboards personalizados por departamento, mejorando la experiencia del usuario e incrementando la eficiencia en la toma de decisiones en un 35%. Utilicé Postman y Swagger para pruebas de API, Azure DevOps para coordinar tareas con metodología Scrum, y GitHub para control de versiones.",
-    image: "/projects/intranet.webp",
-    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.PHP, TAGS.CSHARP, TAGS.MYSQL, TAGS.POSTMAN, TAGS.AZUREDEVOPS, TAGS.GITHUB, TAGS.FILEZILLA],
+    image: "/projects/intranet.png",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.PHP, TAGS.C, TAGS.MYSQL, TAGS.POSTMAN, TAGS.AZUREDEVOPS, TAGS.GITHUB, TAGS.FILEZILLA],
   },
   {
     title: "Sistema de Cartografía para Vehículos Movilcar",
     description:
-      "Mejoré el software de cartografía utilizado en vehículos Movilcar, integrando ArcGIS y AutoCAD para mapas cartográficos GPS, junto con Microsoft SQL Server para analizar datos y optimizar estructuras de bases de datos. Utilicé FileZilla para la transferencia de archivos y GitHub para el control de versiones, incrementando la precisión del posicionamiento en un 50%.",
-    image: "/projects/cartografia.webp",
+      "Mejoré el software de cartografía utilizado en vehículos Movilcar, integrando ArcGIS y AutoCAD para mapas cartográficos GPS, junto con Microsoft SQL Server para analizar datos y optimizar estructuras de bases de datos, incrementando la precisión del posicionamiento en un 50%.",
+    image: "/projects/cartografia.png",
     tags: [TAGS.ARCGIS, TAGS.AUTOCAD, TAGS.MSSQL],
   },
   {
     title: "Sistema de Monitorización",
     description:
-      "Diseñé e implementé un sistema de monitorización basado en Grafana para visualizar datos de Microsoft SQL Server, creando consultas y procedimientos almacenados para análisis en tiempo real. Utilicé GitHub para gestionar el código y FileZilla para transferencias de archivos, mejorando la visibilidad de métricas críticas.",
-    image: "/projects/monitorizacion.webp",
+      "Diseñé e implementé un sistema de monitorización basado en Grafana para visualizar datos de Microsoft SQL Server, creando consultas y procedimientos almacenados para análisis en tiempo real, mejorando la visibilidad de métricas críticas.",
+    image: "/projects/monitorizacion.png",
     tags: [TAGS.GRAFANA, TAGS.MSSQL]
   },
   {
-    title: "Automatización imagenes con OCR + IA",
+    title: "OCR de Matrículas de Coches con IA",
     description:
-      "Implementé flujos de automatización con n8n, integrando scripts en Python y conexiones con APIs a través de Postman y Swagger. Mantuve aplicaciones en C# .NET, utilizando Azure DevOps para la gestión de tareas y GitHub para control de versiones, optimizando flujos de trabajo y reduciendo tiempos de procesamiento.",
-    image: "/projects/n8n.png",
-    tags: [TAGS.N8N, TAGS.PYTHON, TAGS.DOCKER]
+      "Diseñé e implementé un flujo de automatización con n8n para extraer matrículas de coches a partir de imágenes almacenadas en Google Drive. Utilicé GPT-4o para realizar OCR, identificando matrículas con alta precisión mediante instrucciones específicas. Procesé los datos con JavaScript para eliminar espacios en blanco, integrando los resultados en Google Sheets y MySQL para un almacenamiento eficiente. Este proyecto optimizó la gestión de datos de matrículas, reduciendo el tiempo de procesamiento y mejorando la precisión en la detección.",
+    image: "/projects/ocr.png",
+    tags: [TAGS.N8N, TAGS.DOCKER, TAGS.JAVASCRIPT, TAGS.MYSQL, TAGS.OPENAI]
   },
+  {
+    title: "Difuminado de Caras en Imágenes con Python",
+    description:
+      "Desarrollé una aplicación en Python para procesar imágenes por lotes, detectando rostros con Insightface y aplicando un desenfoque gaussiano con OpenCV para proteger la privacidad. Utilicé Pytesseract para preservar texto legible, como matrículas, e implementé una interfaz gráfica con tkinter para seleccionar carpetas, ajustar niveles de difuminado y sensibilidad de detección. El proyecto genera un resumen de procesamiento y copia archivos XML, optimizando la automatización y la protección de datos visuales.",
+    image: "/projects/script.png",
+    tags: [TAGS.PYTHON]
+  }
 ]
 ---
 

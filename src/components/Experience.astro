@@ -1,42 +1,42 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro"
+
 const EXPERIENCE = [
   {
-    date: "Actualmente...",
+    date: "Oct 2011 – actualidad",
     title: "Desarrollador FullStack",
-    company: "Utedevas",
+    company: "Utedevas, Madrid, España",
     description:
-      "Diseño y desarrollo de aplicaciones web interactivas para creacion incidencias en departamentos helpdesk, inventario de material y monitorizacion varios. Diseñé modelos de base de datos y optimicé consultas SQL, mejorando el rendimiento de las consultas un 15%.",
-      
+      "Desarrollé y mantuve una plataforma web de intranet de análisis de datos con HTML, CSS, PHP, JavaScript, MySQL y servicios web SOAP, creando dashboards personalizados por departamento, mejorando la experiencia del usuario e incrementando la eficiencia en la toma de decisiones en un 35%. Diseñé y desarrollé aplicaciones web interactivas para creación de incidencias en departamentos de helpdesk, inventario de material y monitorización. Coordiné y supervisé tareas en un equipo ágil utilizando Azure DevOps con metodología Scrum, optimizando flujos de trabajo. Implementé scripts en Shell, SQL y Python para automatización de procesos. Mejoré el software de cartografía en vehículos Movilcar con ArcGIS, AutoCAD y bases de datos SQL, mejorando el posicionamiento en un 50%. Diseñé modelos de bases de datos y optimicé consultas SQL, mejorando el rendimiento un 15%. Proporcioné soporte técnico, diseñé UI/UX y mantuve aplicaciones web para garantizar seguridad y rendimiento. Implementé un sistema de monitorización con Grafana para visualizar datos SQL.",
   },
   {
     date: "Abr 2009 – Sept 2011",
     title: "Administrador de Sistemas",
-    company: "T-System",
+    company: "T-System, Madrid, España",
     description:
-      "Resolución de incidencias y soporte técnico",
+      "Resolución de incidencias y soporte técnico a usuarios en sistemas operativos Windows XP y Windows 2000 Server. Gestión de incidencias en Remedy. Resolución de problemas con impresoras. Obtuve certificación en Protección contra el Acceso No Autorizado y completé un curso de excelencia telefónica.",
   },
   {
-    date: "Sept 2009 - Abr 2010",
+    date: "Sept 2009 – Abr 2010",
     title: "Administrador de Sistemas",
-    company: "British Telecom",
+    company: "British Telecom, Madrid, España",
     description:
-      "Mantenimiento y gestión de servidores Windows y Linux. Monitorización de alertas a través de System Center Operations Manager 2007.",
+      "Monitorización de alertas a través de System Center Operations Manager 2007. Mantenimiento y gestión de servidores Windows y Linux. Resolución de incidencias y soporte técnico a usuarios.",
   },
   {
-    date: "Sept 2005 - Nov 2006",
-    title: "Analisis Técnico",
-    company: "Ansib Net Solutions",
+    date: "Sept 2005 – Nov 2006",
+    title: "Análisis Técnico",
+    company: "Ansib Net Solutions, La Finca (Pozuelo de Alarcón), España",
     description:
-      "Monitorización, consultas SQL e incidencias.",
-  }
+      "Monitorización, consultas SQL y resolución de incidencias.",
+  },
 ]
 ---
 
-<ol class="relative mt-16">
+<ol class="experience-timeline">
   {
     EXPERIENCE.map((experience) => (
-      <li class="">
+      <li class="experience-item">
         <ExperienceItem {...experience} />
       </li>
     ))

@@ -1,93 +1,266 @@
 ---
-import GitHub from "./icons/GitHub.astro"
-import NextJS from "./icons/NextJS.astro"
-import Tailwind from "./icons/Tailwind.astro"
-import Link from "./icons/Link.astro"
-import LinkButton from "./LinkButton.astro"
+import HTMLIcon from "./icons/HTMLIcon.astro";
+import CSSIcon from "./icons/CSSIcon.astro";
+import JavaScriptIcon from "./icons/JavaScriptIcon.astro";
+import CplusIcon from "./icons/CplusIcon.astro";
+import PHPIcon from "./icons/PHPIcon.astro";
+import PythonIcon from "./icons/PythonIcon.astro";
+import MSSQLIcon from "./icons/MSSQLIcon.astro";
+import MySQLIcon from "./icons/MySQLIcon.astro";
+import PostmanIcon from "./icons/PostmanIcon.astro";
+import SwaggerIcon from "./icons/SwaggerIcon.astro";
+import AzureDevOpsIcon from "./icons/AzureDevOpsIcon.astro";
+import GrafanaIcon from "./icons/GrafanaIcon.astro";
+import GitHubIcon from "./icons/GitHubIcon.astro";
+import FileZillaIcon from "./icons/FileZillaIcon.astro";
+import AutoCADIcon from "./icons/AutoCADIcon.astro";
+import ArcGISIcon from "./icons/ArcGISIcon.astro";
+import N8NIcon from "./icons/N8NIcon.astro";
+import NodeJSIcon from "./icons/NodeJSIcon.astro";
+import CloudinaryIcon from "./icons/CloudinaryIcon.astro";
+import AngularIcon from "./icons/AngularIcon.astro";
+import DockerIcon from "./icons/DockerIcon.astro";
+import TypescriptIcon from "./icons/TypescriptIcon.astro";
+import OpenaiIcon from "./icons/OpenaiIcon.astro";
 
 const TAGS = {
-  NEXT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: NextJS,
+  HTML: {
+    name: "HTML",
+    class: "project-tag bg-orange-500 text-white",
+    icon: HTMLIcon,
   },
-  TAILWIND: {
-    name: "Tailwind CSS",
-    class: "bg-[#003159] text-white",
-    icon: Tailwind,
+  CSS: {
+    name: "CSS",
+    class: "project-tag bg-purple-500 text-white",
+    icon: CSSIcon,
   },
+  JAVASCRIPT: {
+    name: "JavaScript",
+    class: "project-tag bg-yellow-500 text-[#0f172a]", // Texto oscuro para modo claro
+    icon: JavaScriptIcon,
+  },
+  TYPESCRIPT: {
+    name: "Typescript",
+    class: "project-tag bg-blue-500 text-[#0f172a]", // Texto oscuro para modo claro
+    icon: TypescriptIcon,
+  },
+  C: {
+    name: "C# .NET",
+    class: "project-tag bg-blue-500 text-white",
+    icon: CplusIcon,
+  },
+  ANGULAR: {
+    name: "Angular",
+    class: "project-tag bg-purple-600 text-white",
+    icon: AngularIcon,
+  },
+  PHP: {
+    name: "PHP",
+    class: "project-tag bg-blue-600 text-white",
+    icon: PHPIcon,
+  },
+  PYTHON: {
+    name: "Python",
+    class: "project-tag bg-blue-600 text-white",
+    icon: PythonIcon,
+  },
+  MSSQL: {
+    name: "Microsoft SQL Server",
+    class: "project-tag bg-gray-600 text-white",
+    icon: MSSQLIcon,
+  },
+  MYSQL: {
+    name: "MySQL",
+    class: "project-tag bg-gray-600 text-white",
+    icon: MySQLIcon,
+  },
+  POSTMAN: {
+    name: "Postman API",
+    class: "project-tag bg-orange-600 text-white",
+    icon: PostmanIcon,
+  },
+  SWAGGER: {
+    name: "Swagger API",
+    class: "project-tag bg-green-500 text-white",
+    icon: SwaggerIcon,
+  },
+  AZUREDEVOPS: {
+    name: "Azure DevOps",
+    class: "project-tag bg-blue-700 text-white",
+    icon: AzureDevOpsIcon,
+  },
+  GRAFANA: {
+    name: "Grafana",
+    class: "project-tag bg-orange-500 text-white",
+    icon: GrafanaIcon,
+  },
+  GITHUB: {
+    name: "GitHub",
+    class: "project-tag bg-gray-800 text-white",
+    icon: GitHubIcon,
+  },
+  FILEZILLA: {
+    name: "FileZilla",
+    class: "project-tag bg-green-600 text-white",
+    icon: FileZillaIcon,
+  },
+  AUTOCAD: {
+    name: "AutoCAD",
+    class: "project-tag bg-red-600 text-white",
+    icon: AutoCADIcon,
+  },
+  ARCGIS: {
+    name: "ArcGIS",
+    class: "project-tag bg-green-600 text-white",
+    icon: ArcGISIcon,
+  },
+  N8N: {
+    name: "n8n",
+    class: "project-tag bg-purple-500 text-white",
+    icon: N8NIcon,
+  },
+  NODEJS: {
+    name: "Node.js",
+    class: "project-tag bg-green-700 text-white",
+    icon: NodeJSIcon,
+  },
+  CLOUDINARY: {
+    name: "Cloudinary",
+    class: "project-tag bg-blue-600 text-white",
+    icon: CloudinaryIcon,
+  },
+  DOCKER: {
+    name: "Docker",
+    class: "project-tag bg-blue-600 text-white",
+    icon: DockerIcon,
+  },
+  OPENAI: {
+    name: "OpenAI",
+    class: "project-tag bg-purple-600 text-white",
+    icon: OpenaiIcon,
+  }
 }
+
 const PROJECTS = [
   {
-    title: "SVGL - A beautiful library with SVG logos",
+    title: "NeuroPlanner - Planificador de Rutinas Semanales",
     description:
-      "Biblioteca de logos SVG de las marcas más populares. +10k visitas al mes. +2K svgs descargados. Creado desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://svgl.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
-    image: "/projects/svgl.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+      "Coordiné y desarrollé un planificador de rutinas semanales para personas con TDAH/TEA en el Máster Full Stack Developer. Mantuve el diagrama técnico en Excalidraw, configuré MySQL en Aiven para la base de datos, integré Cloudinary para gestión de imágenes, documenté la API con Swagger, and gestioné el repositorio en GitHub, asegurando sincronización entre equipos de frontend y backend.",
+    image: "/projects/neuroplanner.png",
+    frontendLink: "https://github.com/Silverplata/tfm_unir.git",
+    backendLink: "https://github.com/Silverplata/tfm-node.git",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.TYPESCRIPT, TAGS.MYSQL, TAGS.ANGULAR, TAGS.NODEJS, TAGS.SWAGGER, TAGS.POSTMAN, TAGS.CLOUDINARY, TAGS.GITHUB],
   },
   {
-    title: "AdventJS - Retos de programación con JavaScript y TypeScript",
+    title: "Intranet de Análisis de Datos - Utedevas",
     description:
-      "Plataforma gratuita con retos de programación. Más de 1 millón de visitas en un mes. +50K retos completados. Creada desde cero con Next.js, React y Tailwind CSS.",
-    link: "https://adventjs.dev",
-    image: "/projects/adventjs.webp",
-    tags: [TAGS.NEXT, TAGS.TAILWIND],
+      "Desarrollé y mantuve una plataforma web de intranet para análisis de datos con HTML, CSS, PHP, JavaScript, MySQL y servicios web SOAP, creando dashboards personalizados por departamento, mejorando la experiencia del usuario e incrementando la eficiencia en la toma de decisiones en un 35%. Utilicé Postman y Swagger para pruebas de API, Azure DevOps para coordinar tareas con metodología Scrum, y GitHub para control de versiones.",
+    image: "/projects/intranet.png",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JAVASCRIPT, TAGS.PHP, TAGS.C, TAGS.MYSQL, TAGS.POSTMAN, TAGS.AZUREDEVOPS, TAGS.GITHUB, TAGS.FILEZILLA],
   },
+  {
+    title: "Sistema de Cartografía para Vehículos Movilcar",
+    description:
+      "Mejoré el software de cartografía utilizado en vehículos Movilcar, integrando ArcGIS y AutoCAD para mapas cartográficos GPS, junto con Microsoft SQL Server para analizar datos y optimizar estructuras de bases de datos, incrementando la precisión del posicionamiento en un 50%.",
+    image: "/projects/cartografia.png",
+    tags: [TAGS.ARCGIS, TAGS.AUTOCAD, TAGS.MSSQL],
+  },
+  {
+    title: "Sistema de Monitorización",
+    description:
+      "Diseñé e implementé un sistema de monitorización basado en Grafana para visualizar datos de Microsoft SQL Server, creando consultas y procedimientos almacenados para análisis en tiempo real, mejorando la visibilidad de métricas críticas.",
+    image: "/projects/monitorizacion.png",
+    tags: [TAGS.GRAFANA, TAGS.MSSQL]
+  },
+  {
+    title: "OCR de Matrículas de Vehículos con IA",
+    description:
+      "Diseñé e implementé un flujo de automatización con n8n para extraer matrículas de vehículos a partir de imágenes almacenadas en Google Drive. Utilicé GPT-4o para realizar OCR, identificando matrículas con alta precisión mediante instrucciones específicas. Procesé los datos con JavaScript para eliminar espacios en blanco, integrando los resultados en Google Sheets y MySQL para un almacenamiento eficiente. Este proyecto optimizó la gestión de datos de matrículas, reduciendo el tiempo de procesamiento y mejorando la precisión en la detección.",
+    image: "/projects/ocr.png",
+    tags: [TAGS.N8N, TAGS.DOCKER, TAGS.JAVASCRIPT, TAGS.MYSQL, TAGS.OPENAI]
+  },
+  {
+    title: "Difuminado de Caras en Imágenes con Python",
+    description:
+      "Desarrollé una aplicación en Python para procesar imágenes por lotes, detectando rostros con Insightface y aplicando un desenfoque gaussiano con OpenCV para proteger la privacidad. Utilicé Pytesseract para preservar texto legible, como matrículas, e implementé una interfaz gráfica con tkinter para seleccionar carpetas, ajustar niveles de difuminado y sensibilidad de detección. El proyecto genera un resumen de procesamiento y copia archivos XML, optimizando la automatización y la protección de datos visuales.",
+    image: "/projects/script.png",
+    tags: [TAGS.PYTHON]
+  }
 ]
 ---
 
-<div class="flex flex-col gap-y-16">
-  {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
-    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-  <div class="w-full md:w-1/2">
-    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-      <img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
-    </div>
-  </div>
+<section class="section">
 
-  <div class="w-full md:w-1/2 md:max-w-lg">
-    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-      {title}
-    </h3>
-    <div class="flex flex-wrap mt-2">
-      <ul class="flex flex-row mb-2 gap-x-2">
-          {tags.map((tag) => (
-            <li>
-              <span
-                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-              >
-                <tag.icon class="size-4" />
-                {tag.name}
-              </span>
-            </li>
-          ))}
-        </ul>
-
-      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
-      <footer class="flex items-end justify-start mt-4 gap-x-4">
-          {github && (
-            <LinkButton href={github}>
-              <GitHub class="size-6" />
-              Code
-              
-            </LinkButton>
-          )}
-          {link && (
-            <LinkButton href={link}>
-              <Link class="size-4" />
-              Preview
-            </LinkButton>
-          )}
-        </footer>
-    </div>
+  <div class="flex flex-col gap-y-16">
+    {
+      PROJECTS.map(({ image, title, description, tags, frontendLink, backendLink }) => (
+        <article class="project-card">
+          <div class="w-full md:w-1/2 project-image-container">
+            <img class="project-image" alt={title} loading="lazy" src={image} />
+          </div>
+          <div class="w-full md:w-1/2 md:max-w-lg project-content">
+            <h3>{title}</h3>
+            <div class="project-tags">
+              {tags.map((tag) => (
+                <span class={tag.class}>
+                  <tag.icon />
+                  {tag.name}
+                </span>
+              ))}
+            </div>
+            <div class="description">{description}</div>
+            <footer class="mt-4 flex gap-4">
+              {frontendLink ? (
+                <a href={frontendLink} class="text-sm font-semibold text-[#0f172a] hover:underline dark:text-[var(--primary)]" target="_blank" rel="noopener noreferrer">
+                  Ver Frontend en GitHub
+                </a>
+              ) : null}
+              {backendLink ? (
+                <a href={backendLink} class="text-sm font-semibold text-[#0f172a] hover:underline dark:text-[var(--primary)]" target="_blank" rel="noopener noreferrer">
+                  Ver Backend en GitHub
+                </a>
+              ) : null}
+              {!frontendLink && !backendLink ? (
+                <span class="text-sm text-gray-500 dark:text-gray-400">No hay enlaces disponibles para este proyecto.</span>
+              ) : null}
+            </footer>
+          </div>
+        </article>
+      ))
+    }
   </div>
-</article>
-    ))
+</section>
+
+<style>
+  h2 {
+    color: #0f172a; /* Más oscuro para modo claro */
   }
-</div>
-
-
-
+  .dark h2 {
+    color: var(--text-dark);
+  }
+  .project-content h3 {
+    color: #0f172a; /* Más oscuro para modo claro */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+  .dark .project-content h3 {
+    color: var(--text-dark);
+  }
+  .project-tags {
+    margin: 0.5rem 0;
+  }
+  .project-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; /* Aumenta el espacio */
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+  }
+</style>

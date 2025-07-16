@@ -1,122 +1,181 @@
 ---
-import SunIcon from "./icons/Sun.astro"
-import MoonIcon from "./icons/Moon.astro"
-import SystemIcon from "./icons/System.astro"
-
-const THEMES = ["Light", "Dark", "System"]
 ---
 
-<div class="relative ml-1 mr-1">
-  <button
-    transition:persist
-    id="theme-toggle-btn"
-    class="appearance-none border-none flex hover:scale-125 transition"
-  >
-    <span class="sr-only">Elige el tema</span>
-    <SunIcon id="light" class="theme-toggle-icon size-5 transition-all" />
-    <MoonIcon
-      id="dark"
-      class="theme-toggle-icon absolute size-5 transition-all"
-    />
-    <SystemIcon
-      id="system"
-      class="theme-toggle-icon absolute size-5 transition-all"
-    />
-  </button>
-  <div
-    transition:persist
-    id="themes-menu"
-    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
-  >
-    <ul>
-      {
-        THEMES.map((theme) => (
-          <li class="themes-menu-option px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm">
-            {theme}
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-</div>
+<label class="switch" id="theme-toggle" aria-label="Alternar tema">
+  <input type="checkbox" id="theme-toggle-input">
+  <span class="slider"></span>
+</label>
+
+<script>
+  const html = document.documentElement;
+  const themeToggleInput = document.getElementById('theme-toggle-input') as HTMLInputElement;
+
+  // Definir el tipo de theme explícitamente
+  type Theme = 'light' | 'dark';
+
+  const setTheme = (theme: Theme) => {
+    html.classList.remove('light', 'dark');
+    html.classList.add(theme);
+    localStorage.setItem('theme', theme);
+    if (themeToggleInput) {
+      themeToggleInput.checked = theme === 'dark';
+      themeToggleInput.parentElement?.setAttribute('data-theme', theme);
+    }
+  };
+
+  const toggleTheme = () => {
+    const currentTheme = html.classList.contains('dark') ? 'light' : 'dark';
+    setTheme(currentTheme);
+  };
+
+  const initializeTheme = () => {
+    const savedTheme = localStorage.getItem('theme') as Theme | null;
+    const theme = savedTheme === 'dark' ? 'dark' : 'light';
+    setTheme(theme);
+  };
+
+  if (themeToggleInput) {
+    themeToggleInput.addEventListener('change', toggleTheme);
+    initializeTheme();
+  } else {
+    console.error('No se encontró el input con ID "theme-toggle-input"');
+  }
+</script>
 
 <style>
-  #themes-menu.open {
-    display: inline;
-    animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  .switch {
+    font-size: 16px; /* Base para escalar */
+    position: relative;
+    display: inline-block;
+    width: 4rem; /* 64px */
+    height: 2rem; /* 32px */
   }
 
-  @keyframes scale-up-center {
-    from {
-      transform: scale(0.8);
-      opacity: 0;
-    }
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
 
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #e5e7eb, #d1d5db); /* Claro, alineado con #f3e8ff */
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow:
+      inset 0 0 10px rgba(0, 0, 0, 0.1),
+      inset 0 0 20px rgba(0, 0, 0, 0.05),
+      0 0 15px rgba(0, 0, 0, 0.05);
+  }
+
+  .switch[data-theme="dark"] .slider {
+    background: linear-gradient(135deg, #1a003f, #08001a); /* Oscuro, cósmico */
+  }
+
+  .slider::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(circle, rgba(255, 255, 255, 0.7) 1px, transparent 1px) 0 0,
+      radial-gradient(circle, rgba(255, 255, 255, 0.4) 1px, transparent 1px) 8px 8px,
+      radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px) 16px 16px;
+    background-size: 24px 24px, 32px 32px, 40px 40px;
+    animation: stars-move 20s linear infinite, stars-twinkle 4s ease-in-out infinite;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .switch[data-theme="dark"] .slider::before {
+    opacity: 1;
+  }
+
+  @keyframes stars-move {
+    from {
+      transform: translateX(0) translateY(0);
+    }
     to {
-      transform: scale(1);
+      transform: translateX(-12px) translateY(-8px);
+    }
+  }
+
+  @keyframes stars-twinkle {
+    0%, 100% {
       opacity: 1;
     }
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  .slider::after {
+    position: absolute;
+    content: "";
+    height: 1.5rem; /* 24px */
+    width: 1.5rem; /* 24px */
+    border-radius: 50%;
+    background: radial-gradient(circle, #ff7f00, #ffa500); /* Sol */
+    top: 0.25rem;
+    left: 0.25rem;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    box-shadow:
+      0 0 10px rgba(255, 165, 0, 0.6),
+      0 0 20px rgba(255, 165, 0, 0.3);
+  }
+
+  .switch[data-theme="dark"] .slider::after {
+    background: radial-gradient(circle, #d3d3d3, #a9a9a9); /* Luna */
+    transform: translateX(2rem); /* 32px */
+    box-shadow:
+      0 0 10px rgba(255, 255, 255, 0.6),
+      0 0 20px rgba(255, 255, 255, 0.3);
+  }
+
+  .slider::after::before {
+    content: "";
+    position: absolute;
+    width: 0.3rem; /* 4.8px */
+    height: 0.3rem;
+    background: rgba(136, 136, 136, 0.8);
+    border-radius: 50%;
+    top: 0.4rem;
+    left: 0.6rem;
+    box-shadow:
+      0.45rem 0.2rem 0 0 rgba(136, 136, 136, 0.8),
+      -0.2rem -0.3rem 0 0 rgba(136, 136, 136, 0.8);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .switch[data-theme="dark"] .slider::after::before {
+    opacity: 1;
+  }
+
+  .switch input:focus + .slider {
+    outline: none;
+    box-shadow:
+      0 0 20px rgba(255, 255, 255, 0.6),
+      0 0 40px rgba(255, 255, 255, 0.3);
+  }
+
+  .slider:hover {
+    box-shadow:
+      inset 0 0 15px rgba(255, 255, 255, 0.3),
+      inset 0 0 30px rgba(255, 255, 255, 0.15),
+      0 0 20px rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, #2563eb, #1e40af); /* Hover azul */
+  }
+
+  .switch[data-theme="dark"] .slider:hover {
+    background: linear-gradient(135deg, #1a003f, #08001a);
   }
 </style>
-
-<script is:inline>
-  let remove = null
-  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)")
-  const themesMenu = document.getElementById("themes-menu")
-
-  const getThemePreference = () => {
-    if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("theme") ?? "system"
-    }
-
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light"
-  }
-
-  const updateIcon = (themePreference) => {
-    document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
-      element.style.scale = element.id === themePreference ? "1" : "0"
-    })
-  }
-
-  const updateTheme = () => {
-    if (remove != null) {
-      remove()
-    }
-    matchMedia.addEventListener("change", updateTheme)
-    remove = () => {
-      matchMedia.removeEventListener("change", updateTheme)
-    }
-
-    const themePreference = getThemePreference()
-    const isDark =
-      themePreference === "dark" ||
-      (themePreference === "system" && matchMedia.matches)
-
-    updateIcon(themePreference)
-    document.documentElement.classList[isDark ? "add" : "remove"]("dark")
-  }
-
-  updateTheme()
-
-  document.addEventListener("click", () => themesMenu.classList.remove("open"))
-
-  document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
-    e.stopPropagation()
-    const isClosed = !themesMenu.classList.contains("open")
-    themesMenu.classList[isClosed ? "add" : "remove"]("open")
-  })
-
-  document.querySelectorAll(".themes-menu-option").forEach((element) => {
-    element.addEventListener("click", (e) => {
-      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim())
-      updateTheme()
-    })
-  })
-
-  document.addEventListener('astro:after-swap', () => {
-    updateTheme();
-    window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
-  })
-</script>

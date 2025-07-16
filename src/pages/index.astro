@@ -1,37 +1,133 @@
 ---
-import Layout from "@/layouts/Layout.astro"
+import Layout from '@/layouts/Layout.astro'
+import Hero from '@/components/Hero.astro'
+import AboutMe from '@/components/AboutMe.astro'
+import Experience from '@/components/Experience.astro'
+import Projects from '@/components/Projects.astro'
+import SectionContainer from '@/components/SectionContainer.astro'
+import TitleSection from '@/components/TitleSection.astro'
+import Briefcase from '@/components/icons/Briefcase.astro'
+import CodeIcon from '@/components/icons/CodeIcon.astro'
+import GraduationCap from '@/components/icons/GraduationCap.astro'
+import HTMLIcon from '@/components/icons/HTMLIcon.astro'
+import CSSIcon from '@/components/icons/CSSIcon.astro'
+import JavaScriptIcon from '@/components/icons/JavaScriptIcon.astro'
+import PHPIcon from '@/components/icons/PHPIcon.astro'
+import PythonIcon from '@/components/icons/PythonIcon.astro'
+import DotNETIcon from '@/components/icons/DotnetIcon.astro'
+import AngularIcon from '@/components/icons/AngularIcon.astro'
+import SQLServerIcon from '@/components/icons/MSSQLIcon.astro'
+import MySQLIcon from '@/components/icons/MySQLIcon.astro'
+import MongoDBIcon from '@/components/icons/MongoIcon.astro'
+import GitIcon from '@/components/icons/GitHubIcon.astro'
+import NodeJSIcon from '@/components/icons/NodeJSIcon.astro'
+import AzureDevOpsIcon from '@/components/icons/AzureDevOpsIcon.astro'
+import AstroIcon from '@/components/icons/AstroIcon.astro'
+import GearIcon from '@/components/icons/GearIcon.astro'
+import { Code } from 'astro/components'
 
-import AboutMe from "@/components/AboutMe.astro"
-import Briefcase from "@/components/icons/Briefcase.astro"
-import CodeIcon from "@/components/icons/Code.astro"
-import Experience from "@/components/Experience.astro"
-import ProfileCheck from "@/components/icons/ProfileCheck.astro"
-import Projects from "@/components/Projects.astro"
-import SectionContainer from "@/components/SectionContainer.astro"
-import Hero from "@/components/Hero.astro"
-import TitleSection from "@/components/TitleSection.astro"
+const SKILLS = [
+  {
+    category: 'Lenguajes (Front-end)',
+    items: [
+      { name: 'HTML', icon: HTMLIcon },
+      { name: 'CSS', icon: CSSIcon },
+      { name: 'JavaScript', icon: JavaScriptIcon }
+    ],
+  },
+  {
+    category: 'Lenguajes (Back-end)',
+    items: [
+      { name: 'PHP', icon: PHPIcon },
+      { name: 'Python', icon: PythonIcon },
+      { name: 'C#', icon: DotNETIcon },
+    ],
+  },
+  {
+    category: 'Frameworks',
+    items: [
+      { name: 'Angular', icon: AngularIcon },
+      { name: 'Node.js', icon: NodeJSIcon },
+      { name: 'Astro', icon: AstroIcon }
+    ],
+  },
+  {
+    category: 'Bases de Datos',
+    items: [
+      { name: 'SQL Server', icon: SQLServerIcon },
+      { name: 'MySQL', icon: MySQLIcon },
+      { name: 'MongoDB', icon: MongoDBIcon }
+    ],
+  },
+  {
+    category: 'Control de Versiones',
+    items: [
+      { name: 'Git', icon: GitIcon },
+      { name: 'Azure', icon: AzureDevOpsIcon }
+    ],
+  },
+]
+
+const EDUCATION = [
+  {
+    date: 'Jul 2025',
+    title: 'Máster FullStack Developer',
+    institution: 'Universidad a distancia UNIR, Madrid, España',
+  },
+  {
+    date: '2017',
+    title: 'Administración Acronis Backup Cloud',
+    institution: 'Dornier, API, Vinci Park, Electronic Trafic, Setex UTE, Madrid, España',
+  },
+  {
+    date: '2015',
+    title: 'Programación de Apps Móviles',
+    institution: 'Universidad Complutense de Madrid, Madrid, España',
+  },
+  {
+    date: '2013',
+    title: 'Diseño Web Avanzado con HTML5 y CSS3, Administración de Base de Datos MySQL',
+    institution: 'Vincipark-Etralux-Api C.UTE, Madrid, España',
+  },
+  {
+    date: '2011',
+    title: 'Curso XML',
+    institution: 'Gesfor, Madrid, España',
+  },
+  {
+    date: 'May 2009',
+    title: 'FP Grado Superior Administración de Sistemas',
+    institution: 'Universidad Francisco de Vitoria, Madrid, España',
+  },
+]
 ---
 
 <Layout
-  title="Porfolio de Jesus Plata - Desarrollador y Programador Web con 10 años de experiencia"
-  description="Contrata a Jesús Plata para crear tu aplicación web."
+  title="Portfolio de Jesús Plata"
+  description="Portfolio profesional de Jesús Plata, Desarrollador Full Stack con más de 10 años de experiencia en desarrollo web, administración de sistemas y bases de datos."
 >
-  <main class="px-4">
-    <SectionContainer class="py-16 md:py-36">
-      <Hero>
-      </slot>
-    </Hero>
+  <main class="container">
+    <SectionContainer class="section py-16 md:py-36 hero">
+      <Hero />
     </SectionContainer>
-    <div class="space-y-24">
-    <SectionContainer id="experiencia">
+
+    <SectionContainer id="sobre-mi" class="section pb-16 md:pb-20">
       <TitleSection>
-        <Briefcase class="size-8" />
-        Experiencia laboral
+        <GraduationCap class="size-8" />
+        Sobre mí
+      </TitleSection>
+      <AboutMe />
+    </SectionContainer>
+
+    <SectionContainer id="experiencia" class="section pb-16 md:pb-20">
+      <TitleSection>
+        <Briefcase class="size-7" />
+        Experiencia Laboral
       </TitleSection>
       <Experience />
     </SectionContainer>
 
-    <SectionContainer id="proyectos">
+    <SectionContainer id="proyectos" class="section pb-16 md:pb-20">
       <TitleSection>
         <CodeIcon class="size-7" />
         Proyectos
@@ -39,13 +135,101 @@ import TitleSection from "@/components/TitleSection.astro"
       <Projects />
     </SectionContainer>
 
-    <SectionContainer id="sobre-mi">
+    <SectionContainer id="habilidades" class="section pb-16 md:pb-20">
       <TitleSection>
-        <ProfileCheck class="size-8" />
-        Sobre mí
+        <GearIcon class="size-7" />
+        Habilidades Técnicas
       </TitleSection>
-      <AboutMe />
+      <div class="skills-grid">
+        {SKILLS.map((skill) => (
+          <div class="skill-card">
+            <h3>{skill.category}</h3>
+            <ul>
+              {skill.items.map((item) => (
+                <li class="flex items-center gap-2">
+                  <item.icon />
+                  {item.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </SectionContainer>
-  </div>
+
+    <SectionContainer id="educacion" class="section pb-16 md:pb-20">
+      <TitleSection>
+        <GraduationCap class="size-8" />
+        Educación
+      </TitleSection>
+      <ol class="education-timeline">
+        {EDUCATION.map((edu) => (
+          <li class="education-item">
+            <div class="grid md:grid-cols-5 md:gap-10 md:space-x-4">
+              <div class="relative pb-12 md:col-span-2">
+                <div class="sticky top-0">
+                  <span class="dot"></span>
+                  <h3>{edu.title}</h3>
+                  <h4>{edu.institution}</h4>
+                  <time>{edu.date}</time>
+                </div>
+              </div>
+              <div class="relative flex flex-col gap-2 pb-4 md:col-span-3">
+                {/* Add description if needed */}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </SectionContainer>
   </main>
 </Layout>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .skill-card {
+    background-color: #f3e8ff; /* Lila claro para modo claro */
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+  }
+  .dark .skill-card {
+    background-color: #1e293b; /* Gris azulado para modo oscuro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  .skill-card h3 {
+    color: #0f172a; /* Más oscuro para modo claro */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-wrap: balance;
+  }
+  .dark .skill-card h3 {
+    color: var(--text-dark);
+  }
+  .skill-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .skill-card li {
+    color: #0f172a; /* Más oscuro para modo claro */
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .dark .skill-card li {
+    color: var(--text-dark);
+  }
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+  }
+</style>

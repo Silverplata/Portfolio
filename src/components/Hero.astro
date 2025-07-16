@@ -1,47 +1,53 @@
 ---
-const personalImageAlt = "Jesús Plata"
-import Badge from "@/components/Badge.astro"
-import LinkedInIcon from "@/components/icons/LinkedIn.astro"
-import MailIcon from "@/components/icons/Mail.astro"
-import SocialPill from "@/components/SocialPill.astro"
+import avatar from '../assets/avatar.webp';
+import GitHubIcon from './icons/GitHubIcon.astro';
+import LinkedIn from './icons/LinkedIn.astro';
 ---
 
-<div class="max-w-xl">
-  <div class="flex gap-4 mb-4">
-    <img
-      class="rounded-full shadow-lg size-16"
-      src="/plata.webp"
-      alt={personalImageAlt}
-    />
-    <a
-      href="https://www.linkedin.com/in/jesus-plata-quesada-0232a1b3"
-      target="_blank"
-      rel="noopener"
-      class="flex items-center transition md:justify-center md:hover:scale-105"
-    >
-      <Badge>Disponible para trabajar</Badge>
-    </a>
-  </div>
-  <h1
-    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
-  >
+<section class="hero section">
+  <img src={avatar.src} alt="Jesús Plata" width="160" height="160" class="mx-auto mb-6" />
+  <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
     Soy Jesús Plata
   </h1>
-  <p
-    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
-  >
-    +10 años de experiencia. <strong
-      >Desarrollador Full Stack</strong
-    > de Madrid, España. Especializado en el desarrollo de aplicaciones web.
+  <p class="mt-4 text-xl">
+    Desarrollador Full Stack con <span class="highlight">+10 años de experiencia</span> en administración de sistemas, bases de datos y desarrollo web.
   </p>
-  <nav class="flex flex-wrap gap-4 mt-8">
-    <SocialPill href="mailto:jpq1985@gmail.com">
-      <MailIcon class="size-4" />
-      Contáctame
-    </SocialPill>
-    <SocialPill href="https://www.linkedin.com/in/jesus-plata-quesada-0232a1b3">
-      <LinkedInIcon class="size-4" />
+  <p class="mt-2">
+    Especializado en crear soluciones intuitivas y eficientes, lideré proyectos como una intranet de análisis de datos que mejoró la toma de decisiones en un 35%.
+  </p>
+  <div class="social-buttons mt-6 flex justify-center gap-4">
+    <a href="https://github.com/Silverplata" class="social-pill" target="_blank" rel="noopener noreferrer">
+      <GitHubIcon class="size-6 mr-2" />
+      GitHub
+    </a>
+    <a href="https://linkedin.com/in/jesus-plata-quesada-0232a1b3" class="social-pill" target="_blank" rel="noopener noreferrer">
+      <LinkedIn class="size-6 mr-2" />
       LinkedIn
-    </SocialPill>
-  </nav>
-</div>
+    </a>
+  </div>
+</section>
+
+<style>
+  .social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem; /* Espaciado entre botones */
+  }
+  .social-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1.25rem;
+  }
+  @media (max-width: 640px) {
+    .social-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    .social-pill {
+      width: 100%;
+      max-width: 12rem; /* Limita el ancho en móviles */
+    }
+  }
+</style>

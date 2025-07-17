@@ -2,7 +2,7 @@
 ---
 
 <label class="switch" id="theme-toggle" aria-label="Alternar tema">
-  <input type="checkbox" id="theme-toggle-input">
+  <input type="checkbox" id="theme-toggle-input" checked>
   <span class="slider"></span>
 </label>
 
@@ -30,7 +30,7 @@
 
   const initializeTheme = () => {
     const savedTheme = localStorage.getItem('theme') as Theme | null;
-    const theme = savedTheme === 'dark' ? 'dark' : 'light';
+    const theme = savedTheme || 'dark'; // Establecer 'dark' como predeterminado si no hay tema guardado
     setTheme(theme);
   };
 

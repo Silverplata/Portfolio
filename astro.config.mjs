@@ -7,7 +7,7 @@ export default defineConfig({
     tailwind(),
     robotsTxt()
   ],
-  site: 'https://portfolio.plata/',
+  site: 'https://portfolio-plata.web.app',
   vite: {
     css: {
       preprocessorOptions: {
